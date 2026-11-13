@@ -141,7 +141,8 @@ a:focus-visible {
   white-space: nowrap;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav .nav-active {
   color: var(--blue);
   text-decoration: underline;
   text-underline-offset: .28em;
@@ -313,6 +314,7 @@ a:focus-visible {
 }
 
 .section-heading h2,
+.catalog-intro h1,
 .about-intro h2,
 .community-section h2,
 .not-found h1 {
@@ -321,6 +323,31 @@ a:focus-visible {
   font-weight: 680;
   line-height: 1.13;
   letter-spacing: -.064em;
+}
+
+.catalog-header {
+  border-bottom: 1px solid var(--rule);
+  background: var(--cold-white);
+}
+
+.catalog-intro {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: end;
+  gap: 1.05rem 3rem;
+  padding-block: clamp(3.25rem, 6.8vw, 6rem) clamp(2.35rem, 4.7vw, 4.15rem);
+}
+
+.catalog-description {
+  max-width: 25em;
+  padding-bottom: .28rem;
+  color: var(--body);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.catalog-products {
+  padding-block: clamp(1.9rem, 4.1vw, 3.65rem) var(--section-space);
 }
 
 .product {
@@ -332,6 +359,7 @@ a:focus-visible {
   --product-light: #e7f0ff;
   --product-shadow: rgb(34 84 163 / 20%);
   --product-rule: var(--rule);
+  --product-hover-rule: #a8bce1;
 }
 
 .product + .product {
@@ -347,6 +375,7 @@ a:focus-visible {
   --product-light: #eae0fc;
   --product-shadow: rgb(86 44 163 / 22%);
   --product-rule: #ded5ed;
+  --product-hover-rule: #bba5e0;
 }
 
 .product-stage {
@@ -380,11 +409,34 @@ a:focus-visible {
   flex: none;
 }
 
-.product-name h3 {
+.product-name :is(h1, h2, h3) {
   font-size: 1.7rem;
   font-weight: 690;
   line-height: 1.15;
   letter-spacing: -.05em;
+}
+
+.product-preview-link:hover {
+  border-color: var(--product-hover-rule);
+}
+
+.product-preview-link:focus-visible {
+  outline-color: var(--product-accent);
+}
+
+.product-preview-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  margin-top: 1.3rem;
+  color: var(--product-accent);
+  font-size: .93rem;
+  font-weight: 640;
+}
+
+.product-preview-link:is(:hover, :focus-visible) .product-preview-cta {
+  text-decoration: underline;
+  text-underline-offset: .26em;
 }
 
 .product-tagline {
@@ -456,30 +508,90 @@ a:focus-visible {
   background: radial-gradient(ellipse, var(--product-shadow), transparent 68%);
 }
 
+.product-detail-hero {
+  overflow: clip;
+  padding-block: clamp(1.3rem, 3.8vw, 3.25rem) clamp(2.4rem, 5.8vw, 5.25rem);
+  background: var(--product-surface);
+  border-bottom: 1px solid var(--product-rule);
+}
+
+.product-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .32rem;
+  min-height: 2.75rem;
+  color: var(--product-accent);
+  font-size: .88rem;
+  font-weight: 590;
+}
+
+.product-back:hover {
+  color: var(--product-accent-hover);
+  text-decoration: underline;
+  text-underline-offset: .27em;
+}
+
+.product-back:focus-visible {
+  outline-color: var(--product-accent);
+}
+
+.product-detail-stage {
+  grid-template-columns: 1fr 1.05fr;
+  min-height: 0;
+  overflow: visible;
+  margin-top: .4rem;
+  padding: clamp(1rem, 2.8vw, 2.5rem) 0 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.product-detail-stage .product-tagline {
+  font-size: clamp(3.1rem, 6.2vw, 6.1rem);
+}
+
+.product-detail-stage .product-visual {
+  width: 108%;
+  margin-left: -4%;
+}
+
+.product-details {
+  padding-block: clamp(3.6rem, 7.8vw, 6.75rem) var(--section-space);
+}
+
+.product-details h2 {
+  color: var(--product-ink);
+  font-size: clamp(2.2rem, 4.35vw, 4rem);
+  font-weight: 680;
+  line-height: 1.15;
+  letter-spacing: -.055em;
+}
+
 .product-features {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem clamp(1.1rem, 3.1vw, 2.85rem);
-  margin-top: clamp(1.45rem, 3.5vw, 2.75rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.75rem, 4.5vw, 4rem) clamp(1.6rem, 6vw, 6.5rem);
+  margin-top: clamp(1.75rem, 4vw, 3.8rem);
   color: var(--product-ink);
 }
 
 .product-features > div {
   border-top: 1px solid var(--product-rule);
-  padding-top: 1rem;
+  padding-top: clamp(.95rem, 2.2vw, 1.65rem);
 }
 
 .product-features dt {
-  margin-bottom: .45rem;
-  font-size: 1.045rem;
+  margin-bottom: .6rem;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
   font-weight: 660;
   line-height: 1.5;
 }
 
 .product-features dd {
   color: var(--product-body);
-  font-size: .925rem;
-  line-height: 1.75;
+  max-width: 36em;
+  font-size: .98rem;
+  line-height: 1.8;
 }
 
 .about-section {
@@ -587,31 +699,12 @@ a:focus-visible {
   margin-top: 1.55rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .action,
-  .site-nav a {
-    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
-  }
-
-  .action svg {
-    transition: transform 180ms ease;
-  }
-
-  .action:hover svg {
-    transform: translateX(2px);
-  }
-}
-
 @media (max-width: 1020px) {
   .hero-inner {
     min-height: clamp(30rem, 57vw, 36.5rem);
   }
 
-  .product-stage {
+  .product-preview-link {
     min-height: 27rem;
   }
 
@@ -625,11 +718,7 @@ a:focus-visible {
 }
 
 @media (max-width: 850px) {
-  .product-features {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .product-stage {
+  .product-preview-link {
     min-height: 25rem;
   }
 }
@@ -669,7 +758,9 @@ a:focus-visible {
   .hero-inner,
   .about-inner,
   .community-section,
-  .product-stage {
+  .catalog-intro,
+  .product-stage,
+  .product-features {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -713,19 +804,16 @@ a:focus-visible {
     height: 2.2rem;
   }
 
-  .product-name h3 {
+  .product-name :is(h1, h2, h3) {
     font-size: 1.45rem;
   }
 
-  .product-tagline {
+  .product-tagline,
+  .product-detail-stage .product-tagline {
     font-size: clamp(2.75rem, 10vw, 4.55rem);
   }
 
-  .product-tagline span {
-  display: block;
-}
-
-.product-description {
+  .product-description {
     margin-top: .95rem;
   }
 
@@ -737,6 +825,15 @@ a:focus-visible {
     width: min(110%, 28rem);
     justify-self: center;
     margin: -.35rem 0 -.35rem;
+  }
+
+  .product-detail-stage {
+    padding: 1.35rem 0 0;
+  }
+
+  .product-detail-stage .product-visual {
+    width: min(104%, 28rem);
+    margin: .1rem 0 -.35rem;
   }
 
   .about-inner {

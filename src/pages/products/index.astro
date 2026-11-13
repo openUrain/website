@@ -1,0 +1,25 @@
+---
+import ProductPreview from '../../components/ProductPreview.astro';
+import { products } from '../../data/products';
+import { productsPath, site } from '../../data/site';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const description = '了解 openUrain 正在开发的产品及其功能。';
+---
+<SiteLayout title={`产品目录 | ${site.name}`} description={description} pathname={productsPath}>
+  <main id="main-content" tabindex="-1">
+    <header class="catalog-header">
+      <div class="container catalog-intro">
+        <div>
+          <p class="section-label" lang="en" data-intro>Products</p>
+          <h1 data-intro>产品目录</h1>
+        </div>
+        <p class="catalog-description" data-intro>{description}</p>
+      </div>
+    </header>
+
+    <div class="container catalog-products">
+      {products.map((product, index) => <ProductPreview product={product} headingLevel={2} intro={index === 0} />)}
+    </div>
+  </main>
+</SiteLayout>

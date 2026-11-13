@@ -1,15 +1,15 @@
 ---
-import Arrow from './Arrow.astro';
 import Brand from './Brand.astro';
-import { site } from '../data/site';
+import SiteNav from './SiteNav.astro';
+
+interface Props {
+  currentPath?: string;
+}
+const { currentPath } = Astro.props;
 ---
 <header class="site-header">
   <div class="container header-inner">
     <Brand />
-    <nav aria-label="主导航" class="site-nav">
-      <a href="/#products" lang="en">Products</a>
-      <a href="/#about" lang="en">About</a>
-      <a href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
-    </nav>
+    <SiteNav currentPath={currentPath} />
   </div>
 </header>

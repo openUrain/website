@@ -1,8 +1,12 @@
 ---
-import Arrow from './Arrow.astro';
 import Brand from './Brand.astro';
+import SiteNav from './SiteNav.astro';
 import { site } from '../data/site';
 
+interface Props {
+  currentPath?: string;
+}
+const { currentPath } = Astro.props;
 const year = new Date().getUTCFullYear();
 ---
 <footer class="site-footer">
@@ -12,11 +16,7 @@ const year = new Date().getUTCFullYear();
         <Brand />
         <p lang="en">{site.tagline}</p>
       </div>
-      <nav class="site-nav footer-nav" aria-label="页脚导航">
-        <a href="/#products" lang="en">Products</a>
-        <a href="/#about" lang="en">About</a>
-        <a href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
-      </nav>
+      <SiteNav currentPath={currentPath} footer />
     </div>
     <p class="copyright">© {year} openUrain</p>
   </div>

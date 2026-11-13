@@ -1,8 +1,8 @@
 ---
 import Arrow from '../components/Arrow.astro';
-import ProductShowcase from '../components/ProductShowcase.astro';
+import ProductPreview from '../components/ProductPreview.astro';
 import { products } from '../data/products';
-import { site } from '../data/site';
+import { productsPath, site } from '../data/site';
 import SiteLayout from '../layouts/SiteLayout.astro';
 
 const principles = [
@@ -14,18 +14,18 @@ const principles = [
 ---
 <SiteLayout title={`${site.name} — ${site.tagline}`}>
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" data-parallax-region>
       <div class="container hero-inner">
         <div class="hero-copy">
-          <h1 id="hero-title" lang="en">Building <span>software</span> <em>for real needs.</em></h1>
-          <p class="hero-mission">{site.mission}</p>
-          <div class="hero-actions">
-            <a class="action action-primary" href="#products" lang="en">Explore Products <Arrow direction="down" /></a>
+          <h1 id="hero-title" lang="en" data-intro>Building <span>software</span> <em>for real needs.</em></h1>
+          <p class="hero-mission" data-intro>{site.mission}</p>
+          <div class="hero-actions" data-intro>
+            <a class="action action-primary" href={productsPath} lang="en">Explore Products <Arrow /></a>
             <a class="action action-secondary" href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <picture>
+        <div class="hero-visual" aria-hidden="true" data-intro>
+          <picture data-parallax-artwork>
             <source media="(max-width: 720px)" srcset="/images/openurain-fold-small.webp" />
             <img
               src="/images/openurain-fold.webp"
@@ -40,24 +40,24 @@ const principles = [
       </div>
     </section>
 
-    <section id="products" class="container products-section" aria-labelledby="products-title">
+    <section class="container products-section" aria-labelledby="featured-title">
       <div class="section-heading">
-        <p class="section-label" lang="en">Products</p>
-        <h2 id="products-title">我们的产品</h2>
+        <p class="section-label" lang="en" data-reveal>Featured Product</p>
+        <h2 id="featured-title" data-reveal>产品一览</h2>
       </div>
-      {products.map((product) => <ProductShowcase product={product} />)}
+      <ProductPreview product={products[0]} headingLevel={3} />
     </section>
 
     <section id="about" class="about-section" aria-labelledby="about-title">
       <div class="container about-inner">
         <div class="about-intro">
-          <p class="section-label" lang="en">About</p>
-          <h2 id="about-title">我们如何<br />做软件</h2>
-          <p>openUrain 是一个开源软件组织。我们关心软件在日常里好不好用，也关心它能不能被持续维护。</p>
+          <p class="section-label" lang="en" data-reveal>About</p>
+          <h2 id="about-title" data-reveal>我们如何<br />做软件</h2>
+          <p data-reveal>openUrain 是一个开源软件组织。我们关心软件在日常里好不好用，也关心它能不能被持续维护。</p>
         </div>
         <dl class="principles">
           {principles.map((principle) => (
-            <div>
+            <div data-reveal>
               <dt>{principle.title}</dt>
               <dd>{principle.description}</dd>
             </div>
@@ -68,11 +68,11 @@ const principles = [
 
     <section class="container community-section" aria-labelledby="community-title">
       <div>
-        <p class="section-label" lang="en">Community</p>
-        <h2 id="community-title">一起把软件做好。</h2>
-        <p>在 GitHub 的项目仓库里，你可以通过 Issue 分享需求、反馈问题，也可以提交 Pull Request 改进文档或代码。</p>
+        <p class="section-label" lang="en" data-reveal>Community</p>
+        <h2 id="community-title" data-reveal>一起把软件做好。</h2>
+        <p data-reveal>在 GitHub 的项目仓库里，你可以通过 Issue 分享需求、反馈问题，也可以提交 Pull Request 改进文档或代码。</p>
       </div>
-      <a class="action action-secondary community-link" href={site.github}>访问 GitHub 组织 <Arrow direction="diagonal" /></a>
+      <a class="action action-secondary community-link" href={site.github} data-reveal>访问 GitHub 组织 <Arrow direction="diagonal" /></a>
     </section>
   </main>
 </SiteLayout>

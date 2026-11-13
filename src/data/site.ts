@@ -5,3 +5,5 @@ export const site = {
   description: 'openUrain 是一个开源软件组织。我们从真实需求出发，和社区一起把软件做得简单、可靠。',
   github: 'https://github.com/openUrain',
 } as const;
+
+export const productsPath = '/products';

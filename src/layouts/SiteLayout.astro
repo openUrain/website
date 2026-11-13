@@ -1,5 +1,6 @@
 ---
 import '../styles/site.css';
+import '../styles/motion.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { site } from '../data/site';
@@ -7,11 +8,12 @@ import { site } from '../data/site';
 interface Props {
   title: string;
   description?: string;
+  pathname?: string;
   noindex?: boolean;
 }
 
-const { title, description = site.description, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const { title, description = site.description, pathname = '/', noindex = false } = Astro.props;
+const canonical = new URL(pathname, Astro.site);
 const socialImage = new URL('/images/openurain-social.png', Astro.site);
 ---
 <!doctype html>
@@ -44,8 +46,9 @@ const socialImage = new URL('/images/openurain-social.png', Astro.site);
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要内容</a>
-    <Header />
+    <Header currentPath={pathname} />
     <slot />
-    <Footer />
+    <Footer currentPath={pathname} />
+    <script src="../scripts/motion.ts"></script>
   </body>
 </html>
