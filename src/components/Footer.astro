@@ -1,0 +1,23 @@
+---
+import Arrow from './Arrow.astro';
+import Brand from './Brand.astro';
+import { site } from '../data/site';
+
+const year = new Date().getUTCFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <Brand />
+        <p lang="en">{site.tagline}</p>
+      </div>
+      <nav class="site-nav footer-nav" aria-label="页脚导航">
+        <a href="/#products" lang="en">Products</a>
+        <a href="/#about" lang="en">About</a>
+        <a href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
+      </nav>
+    </div>
+    <p class="copyright">© {year} openUrain</p>
+  </div>
+</footer>
