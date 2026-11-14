@@ -1,0 +1,78 @@
+---
+import Arrow from '../components/Arrow.astro';
+import ProductPreview from '../components/ProductPreview.astro';
+import { products } from '../data/products';
+import { productsPath, site } from '../data/site';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const principles = [
+  { title: '从真实需求出发', description: '先了解问题在哪些场景里发生，再决定软件需要解决什么。' },
+  { title: '让常用的事更简单', description: '让常用操作容易找到，把复杂的设置留给需要它的人。' },
+  { title: '把可靠性做进日常', description: '认真对待出错时的体验，在发布后持续修复和维护。' },
+  { title: '在开放中改进', description: '欢迎提出不同的看法，让使用软件的人也能参与改进。' },
+];
+---
+<SiteLayout title={`${site.name} — ${site.tagline}`}>
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title" data-parallax-region>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title" lang="en" data-intro>Building <span>software</span> <em>for real needs.</em></h1>
+          <p class="hero-mission" data-intro>{site.mission}</p>
+          <div class="hero-actions" data-intro>
+            <a class="action action-primary" href={productsPath} lang="en">Explore Products <Arrow /></a>
+            <a class="action action-secondary" href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true" data-intro>
+          <picture data-parallax-artwork>
+            <source media="(max-width: 720px)" srcset="/images/openurain-fold-small.webp" />
+            <img
+              src="/images/openurain-fold.webp"
+              width="1080"
+              height="995"
+              alt=""
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="container products-section" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <p class="section-label" lang="en" data-reveal>Featured Product</p>
+        <h2 id="featured-title" data-reveal>产品一览</h2>
+      </div>
+      <ProductPreview product={products[0]} headingLevel={3} />
+    </section>
+
+    <section id="about" class="about-section" aria-labelledby="about-title">
+      <div class="container about-inner">
+        <div class="about-intro">
+          <p class="section-label" lang="en" data-reveal>About</p>
+          <h2 id="about-title" data-reveal>我们如何<br />做软件</h2>
+          <p data-reveal>openUrain 是一个开源软件组织。我们关心软件在日常里好不好用，也关心它能不能被持续维护。</p>
+        </div>
+        <dl class="principles">
+          {principles.map((principle) => (
+            <div data-reveal>
+              <dt>{principle.title}</dt>
+              <dd>{principle.description}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section class="container community-section" aria-labelledby="community-title">
+      <div>
+        <p class="section-label" lang="en" data-reveal>Community</p>
+        <h2 id="community-title" data-reveal>一起把软件做好。</h2>
+        <p data-reveal>在 GitHub 的项目仓库里，你可以通过 Issue 分享需求、反馈问题，也可以提交 Pull Request 改进文档或代码。</p>
+      </div>
+      <a class="action action-secondary community-link" href={site.github} data-reveal>访问 GitHub 组织 <Arrow direction="diagonal" /></a>
+    </section>
+  </main>
+</SiteLayout>

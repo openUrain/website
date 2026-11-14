@@ -1,0 +1,23 @@
+---
+import Arrow from './Arrow.astro';
+import { productsPath, site } from '../data/site';
+
+interface Props {
+  currentPath?: string;
+  footer?: boolean;
+}
+
+const { currentPath, footer = false } = Astro.props;
+const productsIsCurrent = currentPath === productsPath;
+const inProducts = productsIsCurrent || currentPath?.startsWith(`${productsPath}/`);
+---
+<nav aria-label={footer ? '页脚导航' : '主导航'} class:list={['site-nav', { 'footer-nav': footer }]}>
+  <a
+    href={productsPath}
+    class:list={{ 'nav-active': inProducts }}
+    aria-current={productsIsCurrent ? 'page' : undefined}
+    lang="en"
+  >Products</a>
+  <a href="/#about" lang="en">About</a>
+  <a href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
+</nav>

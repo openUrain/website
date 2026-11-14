@@ -1,0 +1,15 @@
+---
+import Brand from './Brand.astro';
+import SiteNav from './SiteNav.astro';
+
+interface Props {
+  currentPath?: string;
+}
+const { currentPath } = Astro.props;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <Brand />
+    <SiteNav currentPath={currentPath} />
+  </div>
+</header>

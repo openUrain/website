@@ -1,0 +1,70 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Arrow from '../../components/Arrow.astro';
+import ProductArtwork from '../../components/ProductArtwork.astro';
+import { productPath, products, type Product } from '../../data/products';
+import { productsPath, site } from '../../data/site';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+export const getStaticPaths = (() => products.map((product) => ({
+  params: { id: product.id },
+  props: { product },
+}))) satisfies GetStaticPaths;
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+---
+<SiteLayout
+  title={`${product.name} | ${site.name}`}
+  description={`${product.name} 是 ${site.name} 的 ${product.platform}。${product.description}`}
+  pathname={productPath(product.id)}
+>
+  <main id="main-content" class:list={['product', `product--${product.id}`]} tabindex="-1">
+    <div class="product-detail-hero">
+      <div class="container">
+        <a class="product-back" href={productsPath}><Arrow direction="left" /> 返回产品目录</a>
+
+        <section class="product-stage product-detail-stage" aria-labelledby="product-title">
+          <div class="product-copy">
+            <div class="product-name" data-intro>
+              <img src={product.icon} alt="" width="44" height="44" decoding="async" />
+              <h1 id="product-title" lang="en">{product.name}</h1>
+            </div>
+            <p class="product-tagline" lang="en" data-intro>
+              {product.tagline.map((line) => <span>{line}{' '}</span>)}
+            </p>
+            <p class="product-description" data-intro>{product.description}</p>
+            <div class="product-actions" data-intro>
+              <a
+                class="action action-primary"
+                href={product.repository}
+                aria-describedby={product.repositoryAccess ? 'repository-access' : undefined}
+              >
+                GitHub 项目 <Arrow direction="diagonal" />
+              </a>
+              <div class="product-platform">
+                <span>{product.platform}</span>
+                {product.repositoryAccess && <span id="repository-access">{product.repositoryAccess}</span>}
+              </div>
+            </div>
+          </div>
+          <ProductArtwork artwork={product.artwork} priority />
+        </section>
+      </div>
+    </div>
+
+    <section class="container product-details" aria-labelledby="features-title">
+      <h2 id="features-title" data-reveal>功能与使用方式</h2>
+      <dl class="product-features">
+        {product.features.map((feature) => (
+          <div data-reveal>
+            <dt>{feature.title}</dt>
+            <dd>{feature.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  </main>
+</SiteLayout>

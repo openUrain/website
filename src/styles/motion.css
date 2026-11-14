@@ -1,0 +1,111 @@
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root) {
+    animation-duration: 110ms;
+    animation-timing-function: ease-in;
+  }
+
+  ::view-transition-new(root) {
+    animation-duration: 190ms;
+    animation-timing-function: ease-out;
+  }
+
+  [data-intro] {
+    animation: enter 560ms var(--ease-out) var(--intro-delay, 0ms) backwards;
+  }
+
+  .hero-mission,
+  .catalog-intro h1,
+  .product-detail-stage .product-tagline {
+    --intro-delay: 75ms;
+  }
+
+  .hero-actions,
+  .catalog-description,
+  .product-detail-stage .product-description {
+    --intro-delay: 145ms;
+  }
+
+  .hero-visual,
+  .product-detail-stage .product-visual {
+    --intro-delay: 65ms;
+    --intro-offset: 10px;
+    --intro-opacity: .32;
+
+    animation-duration: 730ms;
+  }
+
+  .catalog-products [data-intro],
+  .product-detail-stage .product-actions {
+    --intro-delay: 200ms;
+  }
+
+  @keyframes enter {
+    from {
+      opacity: var(--intro-opacity, 0);
+      translate: 0 var(--intro-offset, 12px);
+    }
+  }
+
+  [data-intro]:focus-within,
+  [data-reveal]:focus-within {
+    animation: none;
+  }
+
+  .action,
+  .site-nav a,
+  .product-back {
+    transition: color 170ms ease, background-color 170ms ease, border-color 170ms ease;
+  }
+
+  .action svg,
+  .product-back svg,
+  .product-preview-cta svg {
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .site-nav a {
+    transition-property: color, text-decoration-color;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .action:hover svg,
+    .product-preview-link:hover .product-preview-cta svg {
+      transform: translateX(3px);
+    }
+
+    .product-back:hover svg {
+      transform: translateX(-3px);
+    }
+
+    .product-preview-link {
+      transition: border-color 220ms ease, transform 280ms var(--ease-out);
+    }
+
+    .product-preview-link:hover {
+      transform: translateY(-3px);
+    }
+
+    .product-preview-link .product-visual img {
+      transition: transform 380ms var(--ease-out);
+    }
+
+    .product-preview-link:hover .product-visual img {
+      transform: translateY(-4px) scale(1.018);
+    }
+  }
+
+  @media (min-width: 721px) and (hover: hover) and (pointer: fine) {
+    [data-parallax-artwork] {
+      transform: translate(var(--pointer-x, 0px), var(--pointer-y, 0px));
+      transition: transform 520ms var(--ease-out);
+    }
+  }
+}
