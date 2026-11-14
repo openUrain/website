@@ -24,7 +24,7 @@ const { product } = Astro.props;
   <main id="main-content" class:list={['product', `product--${product.id}`]} tabindex="-1">
     <div class="product-detail-hero">
       <div class="container">
-        <a class="product-back" href={productsPath}><Arrow direction="left" /> 返回产品目录</a>
+        <a class="product-back" href={productsPath}><Arrow direction="left" /> 返回产品列表</a>
 
         <section class="product-stage product-detail-stage" aria-labelledby="product-title">
           <div class="product-copy">
@@ -42,7 +42,7 @@ const { product } = Astro.props;
                 href={product.repository}
                 aria-describedby={product.repositoryAccess ? 'repository-access' : undefined}
               >
-                GitHub 项目 <Arrow direction="diagonal" />
+                查看 GitHub 仓库 <Arrow direction="diagonal" />
               </a>
               <div class="product-platform">
                 <span>{product.platform}</span>
@@ -56,7 +56,7 @@ const { product } = Astro.props;
     </div>
 
     <section class="container product-details" aria-labelledby="features-title">
-      <h2 id="features-title" data-reveal>功能与使用方式</h2>
+      <h2 id="features-title" data-reveal>Zibblu 能做什么</h2>
       <dl class="product-features">
         {product.features.map((feature) => (
           <div data-reveal>

@@ -6,10 +6,10 @@ import { productsPath, site } from '../data/site';
 import SiteLayout from '../layouts/SiteLayout.astro';
 
 const principles = [
-  { title: '从真实需求出发', description: '先了解问题在哪些场景里发生，再决定软件需要解决什么。' },
-  { title: '让常用的事更简单', description: '让常用操作容易找到，把复杂的设置留给需要它的人。' },
-  { title: '把可靠性做进日常', description: '认真对待出错时的体验，在发布后持续修复和维护。' },
-  { title: '在开放中改进', description: '欢迎提出不同的看法，让使用软件的人也能参与改进。' },
+  { title: '先弄清问题', description: '从真实的使用场景出发，弄清哪里不顺手，再决定怎么改。' },
+  { title: '少一点折腾', description: '常用的操作，应该容易找到、用起来顺手，而不是让人反复研究。' },
+  { title: '上线后继续打磨', description: '发现问题就修，听到反馈就想想怎么改。发布不是终点。' },
+  { title: '好想法一起做', description: '欢迎建议、讨论，也欢迎直接动手。开源的意义，是让更多人参与进来。' },
 ];
 ---
 <SiteLayout title={`${site.name} — ${site.tagline}`}>
@@ -43,7 +43,7 @@ const principles = [
     <section class="container products-section" aria-labelledby="featured-title">
       <div class="section-heading">
         <p class="section-label" lang="en" data-reveal>Featured Product</p>
-        <h2 id="featured-title" data-reveal>产品一览</h2>
+        <h2 id="featured-title" data-reveal>先认识 Zibblu</h2>
       </div>
       <ProductPreview product={products[0]} headingLevel={3} />
     </section>
@@ -52,8 +52,8 @@ const principles = [
       <div class="container about-inner">
         <div class="about-intro">
           <p class="section-label" lang="en" data-reveal>About</p>
-          <h2 id="about-title" data-reveal>我们如何<br />做软件</h2>
-          <p data-reveal>openUrain 是一个开源软件组织。我们关心软件在日常里好不好用，也关心它能不能被持续维护。</p>
+          <h2 id="about-title" data-reveal>我们在意的<br />几件事</h2>
+          <p data-reveal>写软件不只是把功能做出来。我们更在意的是：它能不能解决眼前的问题，用起来是不是省心。</p>
         </div>
         <dl class="principles">
           {principles.map((principle) => (
@@ -69,10 +69,10 @@ const principles = [
     <section class="container community-section" aria-labelledby="community-title">
       <div>
         <p class="section-label" lang="en" data-reveal>Community</p>
-        <h2 id="community-title" data-reveal>一起把软件做好。</h2>
-        <p data-reveal>在 GitHub 的项目仓库里，你可以通过 Issue 分享需求、反馈问题，也可以提交 Pull Request 改进文档或代码。</p>
+        <h2 id="community-title" data-reveal>有想法，聊聊看。</h2>
+        <p data-reveal>有哪里用着不顺手，或是想到更好的做法？欢迎到 GitHub 提 Issue、交流想法；也可以提交 Pull Request，一起动手改进。</p>
       </div>
-      <a class="action action-secondary community-link" href={site.github} data-reveal>访问 GitHub 组织 <Arrow direction="diagonal" /></a>
+      <a class="action action-secondary community-link" href={site.github} data-reveal>去 GitHub 看看 <Arrow direction="diagonal" /></a>
     </section>
   </main>
 </SiteLayout>
