@@ -2,11 +2,10 @@
 import Arrow from '../components/Arrow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 ---
-<SiteLayout title="页面未找到 | openUrain" description="你访问的页面未找到。可以返回 openUrain 首页继续浏览。" noindex>
+<SiteLayout title="Page not found | openUrain" description="This page could not be found. Return to the openUrain homepage." noindex>
   <main id="main-content" class="container not-found" tabindex="-1">
-    <p class="section-label">404</p>
-    <h1>这个页面找不到了。</h1>
-    <p>可以返回首页，继续浏览 openUrain 的项目。</p>
-    <a class="action action-primary" href="/">返回首页 <Arrow /></a>
+    <h1 class="page-title">Page not found.</h1>
+    <p>Check the address or head back to the homepage.</p>
+    <a class="action action-primary" href="/">Back to home <Arrow /></a>
   </main>
 </SiteLayout>

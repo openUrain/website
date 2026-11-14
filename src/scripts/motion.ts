@@ -1,4 +1,8 @@
 const motionPreference = window.matchMedia('(prefers-reduced-motion: no-preference)');
+const revealStart: Record<string, Keyframe | undefined> = {
+  artwork: { opacity: .68, translate: '0 12px' },
+  'community-link': { opacity: .88, translate: '8px 0' },
+};
 
 function observeReveals() {
   if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
@@ -13,7 +17,7 @@ function observeReveals() {
   }
 
   const observer = new IntersectionObserver((entries) => {
-    let delay = 0;
+    let principleDelay = 0;
     for (const { target, isIntersecting, boundingClientRect, rootBounds } of entries) {
       if (!isIntersecting && boundingClientRect.bottom > (rootBounds?.top ?? 0)) continue;
 
@@ -21,14 +25,19 @@ function observeReveals() {
       observer.unobserve(target);
       if (!isIntersecting || !motionPreference.matches || target.matches(':focus-within')) continue;
 
-      // Start only when the element is already on screen. No hidden pending state.
-      const animation = target.animate(
-        [{ opacity: .58, translate: '0 10px' }, { opacity: 1, translate: '0 0' }],
-        { duration: 490, delay, fill: 'backwards', easing: 'cubic-bezier(.22, 1, .36, 1)' },
-      );
+      const reveal = target.getAttribute('data-reveal');
+      const delay = reveal === 'principle' ? principleDelay : 0;
+      if (reveal === 'principle') principleDelay += 40;
+
+      const from = revealStart[reveal ?? ''] ?? { opacity: .86, translate: '0 7px' };
+      const animation = target.animate([from, { opacity: 1, translate: '0 0' }], {
+        duration: reveal === 'artwork' ? 500 : 380,
+        delay,
+        fill: 'backwards',
+        easing: 'cubic-bezier(.16, 1, .3, 1)',
+      });
       running.set(target, animation);
       animation.addEventListener('finish', () => running.delete(target), { once: true });
-      delay = Math.min(delay + 55, 165);
     }
   }, { threshold: .12 });
 
@@ -57,46 +66,4 @@ function observeReveals() {
   updateObservation();
 }
 
-function addHeroParallax() {
-  const region = document.querySelector<HTMLElement>('[data-parallax-region]');
-  const artwork = region?.querySelector<HTMLElement>('[data-parallax-artwork]');
-  if (!region || !artwork) return;
-
-  const desktopPointer = window.matchMedia('(min-width: 721px) and (hover: hover) and (pointer: fine)');
-  let frame = 0;
-  let x = 0;
-  let y = 0;
-
-  const reset = () => {
-    window.cancelAnimationFrame(frame);
-    frame = 0;
-    artwork.style.removeProperty('--pointer-x');
-    artwork.style.removeProperty('--pointer-y');
-  };
-
-  region.addEventListener('pointermove', (event) => {
-    if (event.pointerType !== 'mouse' || !motionPreference.matches || !desktopPointer.matches) return;
-    x = event.clientX;
-    y = event.clientY;
-    if (frame) return;
-
-    frame = window.requestAnimationFrame(() => {
-      const bounds = region.getBoundingClientRect();
-      const clamp = (value: number) => Math.min(1, Math.max(-1, value));
-      const offsetX = clamp((x - bounds.left) / bounds.width * 2 - 1) * 7;
-      const offsetY = clamp((y - bounds.top) / bounds.height * 2 - 1) * 5;
-      artwork.style.setProperty('--pointer-x', `${offsetX.toFixed(2)}px`);
-      artwork.style.setProperty('--pointer-y', `${offsetY.toFixed(2)}px`);
-      frame = 0;
-    });
-  }, { passive: true });
-
-  region.addEventListener('pointerleave', reset);
-  motionPreference.addEventListener('change', reset);
-  desktopPointer.addEventListener('change', reset);
-  window.addEventListener('pagehide', reset);
-}
-
-// The browser owns document navigation and history. These effects only decorate the current page.
 observeReveals();
-addHeroParallax();
