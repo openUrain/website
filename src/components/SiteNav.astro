@@ -11,7 +11,7 @@ const { currentPath, footer = false } = Astro.props;
 const productsIsCurrent = currentPath === productsPath;
 const inProducts = productsIsCurrent || currentPath?.startsWith(`${productsPath}/`);
 ---
-<nav aria-label={footer ? '页脚导航' : '主导航'} class:list={['site-nav', { 'footer-nav': footer }]}>
+<nav aria-label={footer ? 'Footer navigation' : 'Main navigation'} class:list={['site-nav', { 'footer-nav': footer }]}>
   <a
     href={productsPath}
     class:list={{ 'nav-active': inProducts }}

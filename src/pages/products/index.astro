@@ -4,15 +4,15 @@ import { products } from '../../data/products';
 import { productsPath, site } from '../../data/site';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 
-const description = '这里是我们正在打磨的产品。看看它们能做什么，也欢迎告诉我们哪里还可以更好。';
+const description = 'A closer look at what we are building, starting with Zibblu.';
 ---
-<SiteLayout title={`我们的产品 | ${site.name}`} description={description} pathname={productsPath}>
+<SiteLayout title={`Our Products | ${site.name}`} description={description} pathname={productsPath}>
   <main id="main-content" tabindex="-1">
     <header class="catalog-header">
       <div class="container catalog-intro">
         <div>
           <p class="section-label" lang="en" data-intro>Products</p>
-          <h1 data-intro>我们的产品</h1>
+          <h1 data-intro>Our products</h1>
         </div>
         <p class="catalog-description" data-intro>{description}</p>
       </div>
