@@ -7,7 +7,12 @@ interface Props {
 }
 const { artwork, priority = false } = Astro.props;
 ---
-<div class="product-visual" aria-hidden="true" data-intro={priority ? '' : undefined}>
+<div
+  class="product-visual"
+  aria-hidden="true"
+  data-intro={priority ? '' : undefined}
+  data-reveal={priority ? undefined : 'artwork'}
+>
   <img
     src={artwork.src}
     width={artwork.width}

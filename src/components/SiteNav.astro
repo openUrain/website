@@ -16,8 +16,7 @@ const inProducts = productsIsCurrent || currentPath?.startsWith(`${productsPath}
     href={productsPath}
     class:list={{ 'nav-active': inProducts }}
     aria-current={productsIsCurrent ? 'page' : undefined}
-    lang="en"
   >Products</a>
-  <a href="/#about" lang="en">About</a>
-  <a href={site.github} lang="en">GitHub <Arrow direction="diagonal" /></a>
+  <a href="/#about">About</a>
+  <a href={site.github}>GitHub <Arrow direction="diagonal" /></a>
 </nav>

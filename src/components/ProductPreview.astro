@@ -5,32 +5,26 @@ import { productPath, type Product } from '../data/products';
 
 interface Props {
   product: Product;
-  headingLevel: 2 | 3;
-  intro?: boolean;
+  priority?: boolean;
 }
-const { product, headingLevel, intro = false } = Astro.props;
-const Heading = headingLevel === 2 ? 'h2' : 'h3';
+const { product, priority = false } = Astro.props;
 const titleId = `${product.id}-title`;
 const ctaId = `${product.id}-cta`;
 ---
 <article
   class:list={['product', 'product-preview', `product--${product.id}`]}
   aria-labelledby={titleId}
-  data-intro={intro ? '' : undefined}
-  data-reveal={intro ? undefined : ''}
 >
-  <a class="product-stage product-preview-link" href={productPath(product.id)} aria-labelledby={`${titleId} ${ctaId}`}>
-    <div class="product-copy">
+  <a class="editorial-grid product-stage product-preview-link" href={productPath(product.id)} aria-labelledby={ctaId}>
+    <div class="product-copy" data-intro={priority ? '' : undefined}>
       <div class="product-name">
         <img src={product.icon} alt="" width="44" height="44" loading="lazy" decoding="async" />
-        <Heading id={titleId} lang="en">{product.name}</Heading>
+        <h2 id={titleId}>{product.name}</h2>
       </div>
-      <p class="product-tagline" lang="en">
-        {product.tagline.map((line) => <span>{line}{' '}</span>)}
-      </p>
+      <p class="product-tagline">{product.tagline}</p>
       <p class="product-description">{product.summary}</p>
       <span class="product-preview-cta" id={ctaId}>Explore {product.name} <Arrow /></span>
     </div>
-    <ProductArtwork artwork={product.artwork} />
+    <ProductArtwork artwork={product.artwork} priority={priority} />
   </a>
 </article>

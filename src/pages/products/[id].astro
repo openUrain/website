@@ -18,7 +18,7 @@ const { product } = Astro.props;
 ---
 <SiteLayout
   title={`${product.name} | ${site.name}`}
-  description={`${product.name} is a ${product.platform} from ${site.name}. ${product.description}`}
+  description={product.summary}
   pathname={productPath(product.id)}
 >
   <main id="main-content" class:list={['product', `product--${product.id}`]} tabindex="-1">
@@ -26,15 +26,16 @@ const { product } = Astro.props;
       <div class="container">
         <a class="product-back" href={productsPath}><Arrow direction="left" /> Back to products</a>
 
-        <section class="product-stage product-detail-stage" aria-labelledby="product-title">
+        <header class="editorial-grid product-stage product-detail-stage">
           <div class="product-copy">
             <div class="product-name" data-intro>
               <img src={product.icon} alt="" width="44" height="44" decoding="async" />
-              <h1 id="product-title" lang="en">{product.name}</h1>
+              <div>
+                <h1>{product.name}</h1>
+                <p class="product-platform">{product.platform}</p>
+              </div>
             </div>
-            <p class="product-tagline" lang="en" data-intro>
-              {product.tagline.map((line) => <span>{line}{' '}</span>)}
-            </p>
+            <p class="product-tagline" data-intro>{product.tagline}</p>
             <p class="product-description" data-intro>{product.description}</p>
             <div class="product-actions" data-intro>
               <a
@@ -44,27 +45,28 @@ const { product } = Astro.props;
               >
                 View on GitHub <Arrow direction="diagonal" />
               </a>
-              <div class="product-platform">
-                <span>{product.platform}</span>
-                {product.repositoryAccess && <span id="repository-access">{product.repositoryAccess}</span>}
-              </div>
+              {product.repositoryAccess && <p class="repository-access" id="repository-access">{product.repositoryAccess}</p>}
             </div>
           </div>
           <ProductArtwork artwork={product.artwork} priority />
-        </section>
+        </header>
       </div>
     </div>
 
-    <section class="container product-details" aria-labelledby="features-title">
-      <h2 id="features-title" data-reveal>What you can do with {product.name}</h2>
-      <dl class="product-features">
-        {product.features.map((feature) => (
-          <div data-reveal>
-            <dt>{feature.title}</dt>
-            <dd>{feature.description}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
+    <div class="container product-details">
+      {product.featureGroups.map((group, index) => (
+        <section class="editorial-grid feature-group" aria-labelledby={`feature-group-${index}`}>
+          <h2 class="section-title" id={`feature-group-${index}`}>{group.title}</h2>
+          <dl class="product-features">
+            {group.features.map((feature) => (
+              <div>
+                <dt>{feature.title}</dt>
+                <dd>{feature.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ))}
+    </div>
   </main>
 </SiteLayout>

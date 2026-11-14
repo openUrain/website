@@ -4,22 +4,17 @@ import { products } from '../../data/products';
 import { productsPath, site } from '../../data/site';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 
-const description = 'A closer look at what we are building, starting with Zibblu.';
+const description = 'Explore software from openUrain, starting with Zibblu for Windows.';
 ---
-<SiteLayout title={`Our Products | ${site.name}`} description={description} pathname={productsPath}>
+<SiteLayout title={`Products | ${site.name}`} description={description} pathname={productsPath}>
   <main id="main-content" tabindex="-1">
-    <header class="catalog-header">
-      <div class="container catalog-intro">
-        <div>
-          <p class="section-label" lang="en" data-intro>Products</p>
-          <h1 data-intro>Our products</h1>
-        </div>
-        <p class="catalog-description" data-intro>{description}</p>
-      </div>
+    <header class="container editorial-grid catalog-intro">
+      <h1 class="page-title" data-intro>Products</h1>
+      <p class="catalog-description" data-intro>Meet the software we make, starting with Zibblu.</p>
     </header>
 
     <div class="container catalog-products">
-      {products.map((product, index) => <ProductPreview product={product} headingLevel={2} intro={index === 0} />)}
+      {products.map((product, index) => <ProductPreview product={product} priority={index === 0} />)}
     </div>
   </main>
 </SiteLayout>
