@@ -28,7 +28,7 @@ export const products = [
     icon: '/brand/zibblu.png',
     artwork: { src: '/images/zibblu-dialogue.webp', width: 960, height: 749 },
     repository: 'https://github.com/openUrain/Zibblu',
-    downloadUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.2/Zibblu_0.1.2_x64_Client_Setup.exe',
+    downloadUrl: 'https://download.openurain.com/zibblu/windows/v0.1.3/Zibblu_0.1.3_x64_Client_Setup.exe',
     featureGroups: [
       {
         title: 'Two ways to chat',
