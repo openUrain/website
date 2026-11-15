@@ -38,14 +38,17 @@ const { product } = Astro.props;
             <p class="product-tagline" data-intro>{product.tagline}</p>
             <p class="product-description" data-intro>{product.description}</p>
             <div class="product-actions" data-intro>
+              {product.downloadUrl && (
+                <a class="action action-primary" href={product.downloadUrl}>
+                  Download for Windows <Arrow direction="diagonal" />
+                </a>
+              )}
               <a
-                class="action action-primary"
+                class:list={['action', product.downloadUrl ? 'action-secondary' : 'action-primary']}
                 href={product.repository}
-                aria-describedby={product.repositoryAccess ? 'repository-access' : undefined}
               >
                 View on GitHub <Arrow direction="diagonal" />
               </a>
-              {product.repositoryAccess && <p class="repository-access" id="repository-access">{product.repositoryAccess}</p>}
             </div>
           </div>
           <ProductArtwork artwork={product.artwork} priority />
