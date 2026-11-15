@@ -482,16 +482,12 @@ a:focus-visible {
   font-size: clamp(2.375rem, 9vw, 4.5rem);
 }
 
-.product-platform,
-.repository-access {
+.product-platform {
   color: var(--product-body);
   font-size: .875rem;
   line-height: 1.5;
 }
 
-.repository-access {
-  max-width: 19ch;
-}
 
 .product-details {
   padding-block: var(--section-space);

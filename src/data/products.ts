@@ -10,7 +10,7 @@ export interface Product {
   icon: string;
   artwork: { src: string; width: number; height: number };
   repository: string;
-  repositoryAccess?: string;
+  downloadUrl?: string;
   featureGroups: readonly {
     title: string;
     features: readonly { title: string; description: string }[];
@@ -28,7 +28,7 @@ export const products = [
     icon: '/brand/zibblu.png',
     artwork: { src: '/images/zibblu-dialogue.webp', width: 960, height: 749 },
     repository: 'https://github.com/openUrain/Zibblu',
-    repositoryAccess: 'Private repository. GitHub access required.',
+    downloadUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.2/Zibblu_0.1.2_x64_Client_Setup.exe',
     featureGroups: [
       {
         title: 'Two ways to chat',
