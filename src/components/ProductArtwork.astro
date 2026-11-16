@@ -7,9 +7,8 @@ interface Props {
 }
 const { artwork, priority = false } = Astro.props;
 ---
-<div
+<figure
   class="product-visual"
-  aria-hidden="true"
   data-intro={priority ? '' : undefined}
   data-reveal={priority ? undefined : 'artwork'}
 >
@@ -17,9 +16,10 @@ const { artwork, priority = false } = Astro.props;
     src={artwork.src}
     width={artwork.width}
     height={artwork.height}
-    alt=""
+    alt={artwork.alt}
     loading={priority ? 'eager' : 'lazy'}
     fetchpriority={priority ? 'high' : undefined}
     decoding="async"
   />
-</div>
+  <figcaption>{artwork.caption}</figcaption>
+</figure>

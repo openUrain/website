@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#faf9ff">
-  <meta name="description" content="Meet Zibblu: a calmer Windows messenger with local-first chat history, dependable file sharing, opt-in private LAN conversations, and AI on your terms.">
+  <meta name="theme-color" content="#faf8ff">
+  <meta name="description" content="Zibblu is a Windows messenger with enterprise self-hosting, separate private LAN chat, local-first history, file sharing, and read-only AI.">
   <title>Zibblu — Chat freely. Share privately.</title>
   <link rel="canonical" href="https://zibblu.openurain.com/">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://openurain.com">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Zibblu">
   <meta property="og:title" content="Zibblu — Chat freely. Share privately.">
-  <meta property="og:description" content="A calmer messenger. Your history on your devices, files that keep up, and private conversations on your local network.">
+  <meta property="og:description" content="Host everyday chats on your own server. Start separate encrypted text sessions on your local network.">
   <meta property="og:url" content="https://zibblu.openurain.com/">
-  <meta property="og:image" content="https://openurain.com/images/zibblu-dialogue.webp">
+  <meta property="og:image" content="https://zibblu.openurain.com/images/zibblu-chat.webp">
+  <meta property="og:image:alt" content="Zibblu Windows client showing chat and shared files in a test conversation">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/styles.css">
   <script src="/site.js" defer></script>
@@ -25,148 +25,139 @@
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="/" aria-label="Zibblu home">
-        <img src="https://openurain.com/brand/zibblu.png" alt="" width="34" height="34">
-        <span>Zibblu<span class="brand-dot">.</span></span>
+        <img src="/images/zibblu.png" alt="" width="32" height="32">
+        Zibblu
       </a>
       <nav aria-label="Main navigation">
+        <a href="#self-host">Self-hosting</a>
+        <a href="#privacy">Private LAN</a>
         <a href="#features">Features</a>
-        <a href="#local-first">Local-first</a>
-        <a href="#privacy">Privacy</a>
       </nav>
-      <a class="nav-download" href="#download">Get Zibblu <span aria-hidden="true">↗</span></a>
+      <a class="button button-secondary nav-download" href="#download">Get Zibblu</a>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero shell" aria-labelledby="hero-title">
-      <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
+  <main id="main" tabindex="-1">
+    <section class="shell hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow hero-enter">A better place to stay connected <span class="eyebrow-star" aria-hidden="true">✳</span></p>
-        <h1 id="hero-title" class="hero-enter">Chat freely.<br><em>Share privately.</em></h1>
-        <p class="hero-lede hero-enter">Everyday conversations, meaningful files, and a little more room to breathe. Meet the messenger built to feel like yours.</p>
-        <div class="hero-actions hero-enter">
-          <a class="btn btn-primary" href="#download">Get Zibblu for Windows <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="#features">See what makes it different <span aria-hidden="true">↓</span></a>
+        <h1 id="hero-title">Chat freely. <span>Share privately.</span></h1>
+        <p>Run everyday chats on a server your organization controls. Start a separate encrypted conversation on your local network when you need it.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#download">Get Zibblu for Windows <span aria-hidden="true">↓</span></a>
+          <a class="inline-link" href="#self-host">See how it works <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="hero-proof hero-enter"><span class="proof-dot"></span> Local-first history <span class="proof-slash">/</span> Thoughtful by design</div>
+        <p class="release-note">Windows 10 / 11 · x64 · v0.1.4</p>
       </div>
 
-      <div class="visual-wrap hero-enter">
-        <div class="visual-halo" aria-hidden="true"></div>
-        <div class="app-window" aria-label="Illustrative preview of a Zibblu messaging conversation" role="img">
-          <div class="app-toolbar">
-            <div class="app-logo"><img src="https://openurain.com/brand/zibblu.png" width="23" height="23" alt=""> <strong>Zibblu</strong></div>
-            <div class="app-toolbar-dots" aria-hidden="true"><i></i><i></i><i></i></div>
-          </div>
-          <div class="app-content">
-            <aside class="app-sidebar" aria-hidden="true">
-              <div class="side-caption">CHATS</div>
-              <div class="side-thread is-active"><span class="avatar av-violet">J</span><span><b>Alex</b><small>That's perfect ✨</small></span></div>
-              <div class="side-thread"><span class="avatar av-peach">M</span><span><b>Morgan</b><small>See you tomorrow</small></span></div>
-              <div class="side-thread"><span class="avatar av-blue">T</span><span><b>Team notes</b><small>File shared</small></span></div>
-              <div class="side-bottom"><span class="side-bottom-icon">▦</span> Your files, together.</div>
-            </aside>
-            <div class="app-chat">
-              <div class="chat-top"><span class="avatar av-violet">J</span><span><b>Alex</b><small>Conversation</small></span><span class="chat-more" aria-hidden="true">•••</span></div>
-              <div class="chat-feed">
-                <div class="date-divider">TODAY</div>
-                <div class="bubble bubble-in">Hey! Did the files come through?</div>
-                <div class="bubble bubble-out">All here. Saved right on my device.</div>
-                <div class="file-bubble"><span class="file-icon">↧</span><span><b>weekend-plans.zip</b><small>Shared file · Ready to save</small></span><span aria-hidden="true">✓</span></div>
-                <div class="bubble bubble-in">That's perfect ✨</div>
-              </div>
-              <div class="chat-compose"><span>Message Alex…</span><span aria-hidden="true">＋ &nbsp; ↗</span></div>
+      <figure class="hero-figure">
+        <img src="/images/zibblu-chat.webp" alt="Zibblu Windows client showing a conversation with attachment cards and an inline image preview" width="1188" height="970" fetchpriority="high">
+        <figcaption>Windows client · Chat and file sharing</figcaption>
+      </figure>
+    </section>
+
+    <section class="shell section modes" aria-labelledby="modes-title">
+      <div class="section-heading">
+        <h2 id="modes-title">Two ways to chat.</h2>
+        <p>Choose where ordinary messages are delivered, or open a separate private LAN session for text.</p>
+      </div>
+
+      <div class="mode-grid">
+        <article class="mode-card hosted" id="self-host" aria-labelledby="hosted-title">
+          <span class="badge">Your infrastructure</span>
+          <h3 id="hosted-title">Enterprise Self-Hosting</h3>
+          <p>Deploy Zibblu Online and PostgreSQL with Docker Compose. Your team signs in to your HTTPS server, which delivers internal messages and files without routing them through official Zibblu servers.</p>
+
+          <figure class="diagram">
+            <div class="diagram-track" aria-hidden="true">
+              <span>Windows<br>client</span>
+              <span class="diagram-arrow">↔</span>
+              <span class="diagram-emphasis">Company<br>server</span>
+              <span class="diagram-arrow">↔</span>
+              <span>Windows<br>client</span>
             </div>
-          </div>
-        </div>
-        <div class="float-note"><span class="float-note-icon">✦</span><span><strong>A little more yours.</strong><br><small>Local-first, from day one.</small></span></div>
-        <p class="visual-disclaimer">Illustrative interface · Not a live application view</p>
+            <figcaption>Ordinary chat travels via your company’s server over HTTPS. The server can read messages and files during online availability. Ordinary chats have no end-to-end encryption.</figcaption>
+          </figure>
+
+          <a class="inline-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/ONLINE_DEPLOYMENT.md">Deployment guide on GitHub <span aria-hidden="true">↗</span></a>
+          <small class="repository-note">Zibblu repository access required.</small>
+        </article>
+
+        <article class="mode-card private" id="privacy" aria-labelledby="private-title">
+          <span class="badge">LAN only</span>
+          <h3 id="private-title">Private LAN Chat</h3>
+          <p>Participants opt in to a separate text session and their devices verify each other. An encrypted direct connection carries messages across a reachable LAN, with no server relay or internet fallback.</p>
+
+          <figure class="diagram">
+            <div class="diagram-track diagram-direct" aria-hidden="true">
+              <span>Windows<br>client</span>
+              <span class="diagram-arrow">← Encrypted QUIC →</span>
+              <span>Windows<br>client</span>
+            </div>
+            <figcaption>Private text goes directly from device to device. When the session ends, Zibblu clears its in-memory conversation. Screenshots, copies and OS-level traces are outside that cleanup.</figcaption>
+          </figure>
+
+          <a class="inline-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md#private-lan-sessions">Security details on GitHub <span aria-hidden="true">↗</span></a>
+          <small class="repository-note">Zibblu repository access required.</small>
+        </article>
       </div>
     </section>
 
-    <div class="strip"><div class="shell strip-inner"><span>Made for real conversations.</span><span class="strip-spark" aria-hidden="true">✳</span><span>Built around your devices.</span><span class="strip-spark" aria-hidden="true">✳</span><span>Free from the clutter.</span></div></div>
+    <section class="private-preview" aria-labelledby="private-preview-title">
+      <div class="shell private-preview-layout">
+        <div>
+          <h2 id="private-preview-title">A separate space for private chat.</h2>
+          <p>Open a private invitation from a conversation or from Nearby devices. Once accepted, it opens in a dedicated dark view, separate from your ordinary chat history.</p>
+          <p>The account service issues credentials for device verification. Private text stays on the direct connection.</p>
+        </div>
+        <figure>
+          <img src="/images/zibblu-private.webp" alt="Active Private LAN Chat in the Zibblu Windows client, with a dark conversation pane and an End session control" width="1400" height="930" loading="lazy" decoding="async">
+          <figcaption>Windows client · Active private LAN session</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <section id="features" class="section shell" aria-labelledby="features-title">
-      <div class="section-heading" data-reveal>
-        <p class="eyebrow">LESS NOISE. MORE CONNECTION.</p>
-        <h2 id="features-title">The little things<br>make a <em>big difference.</em></h2>
-        <p>A familiar way to talk, with more freedom for the things you share and the conversations you keep.</p>
+    <section class="shell section features" id="features" aria-labelledby="features-title">
+      <div class="section-heading">
+        <h2 id="features-title">Everyday chat, built around your device.</h2>
       </div>
       <div class="feature-grid">
-        <article class="feature-card feature-chat" data-reveal>
-          <div class="feature-symbol" aria-hidden="true">✳</div>
-          <div class="feature-art feature-art-chat" aria-hidden="true"><span>Hey, are we still on for Friday?</span><span>Of course! 💜</span><span>See you then.</span></div>
-          <div class="feature-text"><p class="feature-no">01 / CONVERSATIONS</p><h3>Just talk.</h3><p>One-on-one and group chats that stay easy to follow. Messages sync when you're back online, while the history you've received stays on your device.</p></div>
+        <article id="local-first">
+          <h3>Local-first history</h3>
+          <p>Received ordinary chats stay in SQLite on the device that received them. Browse that history when an active session goes offline. A new device can receive eligible pending deliveries and new messages.</p>
         </article>
-        <article class="feature-card feature-files" data-reveal>
-          <div class="feature-symbol" aria-hidden="true">↗</div>
-          <div class="feature-art feature-art-files" aria-hidden="true"><div class="file-stack file-stack-back"></div><div class="file-stack file-stack-front"><span>✦</span><b>design-files.zip</b><small>Transfer resumed ✓</small><div class="file-progress"><i></i></div></div></div>
-          <div class="feature-text"><p class="feature-no">02 / SHARING</p><h3>Files, without the fuss.</h3><p>Send files, find what you've shared, and resume interrupted transfers. A conversation should be a useful place to get things done, too.</p></div>
+        <article>
+          <h3>File sharing</h3>
+          <p>Send files and folders, resume interrupted transfers and verify completed downloads. Your server’s policy determines how long a copy is available to download.</p>
         </article>
-        <article class="feature-card feature-lan" data-reveal>
-          <div class="feature-symbol" aria-hidden="true">⌁</div>
-          <div class="feature-art feature-art-lan" aria-hidden="true"><span class="lan-node">You</span><span class="lan-line"></span><span class="lan-lock">◇</span><span class="lan-line"></span><span class="lan-node">Friend</span></div>
-          <div class="feature-text"><p class="feature-no">03 / PRIVATE MODE</p><h3>Your network. Your moment.</h3><p>Start a separate, opt-in, encrypted chat with people on a reachable local network. No internet fallback and no persistent private-session history in the app.</p></div>
+        <article>
+          <h3>Read-only AI</h3>
+          <p>Mention your assistant in an ordinary chat. Review the provider, selected messages and optional text files before sending each request. Cloud AI has no access to private LAN chats.</p>
         </article>
       </div>
     </section>
 
-    <section id="local-first" class="local-section" aria-labelledby="local-title">
-      <div class="shell local-layout">
-        <div class="local-copy" data-reveal>
-          <p class="eyebrow">LOCAL-FIRST, BY DESIGN</p>
-          <h2 id="local-title">Your memories belong <em>on your devices.</em></h2>
-          <p>Zibblu uses the server to deliver messages and temporary attachments, not as a permanent archive of your conversations. Messages you've received live in your local chat history.</p>
-          <p class="local-small">This also means a brand-new device cannot automatically restore years of old chats from the server. Keep a copy of important local data.</p>
+    <section id="download" class="download" aria-labelledby="download-title">
+      <div class="shell download-layout">
+        <div>
+          <h2 id="download-title">Get Zibblu for Windows.</h2>
+          <p>Windows 10 / 11 · x64 · v0.1.4</p>
         </div>
-        <div class="data-diagram" data-reveal aria-label="Zibblu data retention overview">
-          <div class="data-head"><span>WHERE YOUR DATA LIVES</span><span class="data-head-star" aria-hidden="true">✳</span></div>
-          <div class="data-row"><span class="data-icon">▣</span><span><strong>On your device</strong><small>Received chat history and saved files</small></span><b>Long-term</b></div>
-          <div class="data-row"><span class="data-icon">↔</span><span><strong>Online message text</strong><small>Temporary delivery copy</small></span><b>72 hours</b></div>
-          <div class="data-row"><span class="data-icon">▤</span><span><strong>Online files</strong><small>Temporary download availability</small></span><b>7 days</b></div>
-          <div class="data-row"><span class="data-icon">◷</span><span><strong>Incomplete uploads</strong><small>Temporary upload fragments</small></span><b>24 hours</b></div>
-          <p class="data-foot">The server retains account, contact, group and device records. Expired online content is processed by periodic cleanup; backups may have separate retention windows.</p>
+        <div class="download-actions">
+          <a class="button button-primary" href="https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe">Download installer <span aria-hidden="true">↓</span></a>
+          <a class="inline-link" href="https://download.openurain.com/zibblu/windows/v0.1.4/SHA256SUMS.txt">Verify SHA-256 <span aria-hidden="true">↗</span></a>
         </div>
-      </div>
-    </section>
-
-    <section id="privacy" class="section shell privacy-section" aria-labelledby="privacy-title">
-      <div class="privacy-layout">
-        <div data-reveal>
-          <p class="eyebrow">CONTROL THE CONTEXT</p>
-          <h2 id="privacy-title">Privacy should be <em>a choice you understand.</em></h2>
-          <p>Private LAN chats are a distinct mode: participants agree to join, messages use direct encrypted local connections, and the app clears private session content when the session ends.</p>
-          <p class="privacy-note"><strong>Good to know:</strong> regular online chats are <strong>not end-to-end encrypted</strong>. Private-session cleanup cannot erase screenshots, copies, or operating-system remnants.</p>
-        </div>
-        <div class="privacy-side" data-reveal>
-          <div class="privacy-shape" aria-hidden="true"><span>✳</span></div>
-          <h3>AI, on your terms.</h3>
-          <p>When you ask for AI help, you choose the provider and which supported messages or files it can read for that request. No AI access to private LAN chats.</p>
-          <span class="privacy-tag">Explicit permission. Every time.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="download-section" id="download" aria-labelledby="download-title">
-      <div class="shell download-inner" data-reveal>
-        <div class="download-glow" aria-hidden="true"></div>
-        <img src="https://openurain.com/brand/zibblu.png" width="70" height="70" alt="" class="download-icon">
-        <p class="eyebrow">A FRESH WAY TO CONNECT</p>
-        <h2 id="download-title">Make room for <em>better conversations.</em></h2>
-        <p>Start with Zibblu for Windows. More platforms are part of the roadmap, not available downloads yet.</p>
-        <a class="btn btn-light" href="https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe">Download for Windows <span aria-hidden="true">↗</span></a>
-        <small>Windows 10 / 11 · x64 · v0.1.4</small>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-main">
-      <div><a class="brand" href="/"><img src="https://openurain.com/brand/zibblu.png" alt="" width="30" height="30"><span>Zibblu<span class="brand-dot">.</span></span></a><p>Chat freely. Share privately.</p></div>
-      <div class="footer-links"><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="https://openurain.com/">Made by openUrain ↗</a></div>
+    <div class="shell footer-row">
+      <p>© <span id="year">2026</span> openUrain</p>
+      <nav aria-label="Footer">
+        <a href="https://github.com/openUrain/Zibblu">Zibblu on GitHub (restricted) <span aria-hidden="true">↗</span></a>
+        <a href="https://openurain.com/">Made by openUrain <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-    <div class="shell footer-bottom"><span>© <span id="year">2026</span> openUrain. Zibblu is an openUrain product.</span><span>Designed for people, not noise.</span></div>
   </footer>
 </body>
 </html>
