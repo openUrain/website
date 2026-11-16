@@ -10,6 +10,7 @@ export interface Product {
   icon: string;
   artwork: { src: string; width: number; height: number };
   repository: string;
+  website?: string;
   downloadUrl?: string;
   featureGroups: readonly {
     title: string;
@@ -22,12 +23,13 @@ export const products = [
     id: 'zibblu',
     name: 'Zibblu',
     tagline: 'Chat freely. Share privately.',
-    summary: 'A Windows messenger for everyday chats, file sharing, and encrypted conversations on your local network.',
-    description: 'Keep messages and files in one place. Start a separate encrypted chat on your local network, or call on an AI assistant in an online conversation.',
+    summary: 'A calmer Windows messenger with local-first history, dependable file sharing, and opt-in private LAN chats.',
+    description: 'Chat simply, keep received history on your devices, share files with confidence, and opt into separate encrypted private chats on a reachable local network.',
     platform: 'Windows desktop app',
     icon: '/brand/zibblu.png',
     artwork: { src: '/images/zibblu-dialogue.webp', width: 960, height: 749 },
     repository: 'https://github.com/openUrain/Zibblu',
+    website: 'https://zibblu.openurain.com/',
     downloadUrl: 'https://download.openurain.com/zibblu/windows/v0.1.3/Zibblu_0.1.3_x64_Client_Setup.exe',
     featureGroups: [
       {
@@ -35,7 +37,7 @@ export const products = [
         features: [
           {
             title: 'Online chat',
-            description: 'Chat one-on-one or in groups and pick up where you left off with message history. The server delivers and stores online messages. These chats are not end-to-end encrypted.',
+            description: 'Chat one-on-one or in groups. Received history is saved locally; server-side text is temporary for 72 hours. Regular online chats are not end-to-end encrypted.',
           },
           {
             title: 'Private LAN chat',

@@ -38,8 +38,13 @@ const { product } = Astro.props;
             <p class="product-tagline" data-intro>{product.tagline}</p>
             <p class="product-description" data-intro>{product.description}</p>
             <div class="product-actions" data-intro>
+              {product.website && (
+                <a class="action action-primary" href={product.website}>
+                  Explore {product.name} <Arrow direction="diagonal" />
+                </a>
+              )}
               {product.downloadUrl && (
-                <a class="action action-primary" href={product.downloadUrl}>
+                <a class:list={['action', product.website ? 'action-secondary' : 'action-primary']} href={product.downloadUrl}>
                   Download for Windows <Arrow direction="diagonal" />
                 </a>
               )}
