@@ -110,7 +110,7 @@
     }
 
     .product-preview-link:hover .product-visual img {
-      transform: scale(1.045);
+      transform: scale(1.012);
     }
   }
 }

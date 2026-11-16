@@ -31,11 +31,11 @@ Then open http://localhost:8080/. No npm install is required for the product web
 ## Product copy and links
 
 - Windows download is pinned to the **v0.1.4** public R2 URL already used on openUrain. Update the URL and release label together when a newer stable installer is approved.
-- Logo comes from `https://openurain.com/brand/zibblu.png` to avoid binary duplication. If the main site assets move, move/copy the logo into this site's public directory and update links.
-- Local-First server behavior follows the approved 2026-11-16 policies: temporary text 72h, published attachments 7d, incomplete uploads 24h, and local SQLite history as the long-term source.
+- The logo is served from this site’s own public directory.
+- Long-term ordinary history lives in local SQLite. Text delivery defaults to 72 hours. Attachment availability and automatic cleanup depend on deployment settings.
 - Do not claim that **normal online conversations** are end-to-end encrypted. Private LAN chat is a distinct opt-in mode and does not fall back to the internet. Do not imply that offline devices can recover expired server content.
 - Cross-platform mobile availability is a roadmap goal, **not** a shipped download.
-- The hero chat window is an **illustration**, not a real client screenshot.
+- Screenshots show the real Windows client from earlier tests. The [chat and file view](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue35/chat-files.png) and [private LAN view](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue26-private.png) are WebP exports of existing repository assets.
 
 ## Review checklist
 

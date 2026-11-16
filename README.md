@@ -43,5 +43,5 @@ Zibblu 的独立官网位于 [zibblu.openurain.com](https://zibblu.openurain.com
 ## 品牌与产品资料
 
 - 官网标志和字标裁自组织的[原始 Logo](https://github.com/openUrain/.github/blob/main/profile/openUrain.png)。组织介绍见 [GitHub 组织首页](https://github.com/openUrain)。
-- Zibblu 使用其[桌面应用图标](https://github.com/openUrain/Zibblu/blob/main/apps/desktop/src-tauri/icons/icon.png)，功能描述依据[项目 README](https://github.com/openUrain/Zibblu#readme)和[安全说明](https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md)。产品展区的对话气泡是品牌插图。
+- Zibblu 使用其[桌面应用图标](https://github.com/openUrain/Zibblu/blob/main/apps/desktop/src-tauri/icons/icon.png)，功能描述依据[项目 README](https://github.com/openUrain/Zibblu#readme)和[安全说明](https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md)。产品展区使用 [Zibblu Windows 客户端历史验收截图](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue35/chat-files.png)。
 - 在 `src/data/products.ts` 添加产品，Astro 会生成目录卡片、独立详情页和 sitemap 条目。产品品牌配色定义在 `src/styles/site.css`。
