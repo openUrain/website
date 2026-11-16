@@ -15,7 +15,7 @@ const ctaId = `${product.id}-cta`;
   class:list={['product', 'product-preview', `product--${product.id}`]}
   aria-labelledby={titleId}
 >
-  <a class="editorial-grid product-stage product-preview-link" href={productPath(product.id)} aria-labelledby={ctaId}>
+  <a class="editorial-grid product-stage product-preview-link" href={product.website ?? productPath(product.id)} aria-labelledby={ctaId}>
     <div class="product-copy" data-intro={priority ? '' : undefined}>
       <div class="product-name">
         <img src={product.icon} alt="" width="44" height="44" loading="lazy" decoding="async" />
