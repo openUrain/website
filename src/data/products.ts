@@ -46,7 +46,7 @@ export const products = [
     windowsLatestUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe',
     iosBuildUrl: 'https://download.openurain.com/zibblu/ios/v0.1.5/Zibblu-iOS-arm64-unsigned.ipa',
     iosActionsUrl: 'https://github.com/openUrain/Zibblu/actions/workflows/ios.yml',
-    iosInstallGuideUrl: 'https://github.com/openUrain/Zibblu/blob/main/README.md#test-on-your-iphone-from-windows-11',
+    iosInstallGuideUrl: 'https://zibblu.openurain.com/#ios-install-guide',
     featureGroups: [
       {
         title: 'Where messages travel',
