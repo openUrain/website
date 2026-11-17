@@ -304,6 +304,28 @@ figcaption {
 .download-card .button { max-width: 100%; }
 .download-card .inline-link { min-height: 2rem; }
 
+.ios-install-steps {
+  width: 100%;
+  padding: .875rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: .5rem;
+  background: var(--canvas);
+  color: var(--body);
+}
+.ios-install-steps summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 650;
+}
+.ios-install-steps ol {
+  padding-left: 1.25rem;
+  margin: 1rem 0 .75rem;
+}
+.ios-install-steps li + li { margin-top: .625rem; }
+.ios-install-steps p { margin-top: .75rem; }
+.ios-install-steps a { color: var(--accent); text-underline-offset: .2em; }
+
+
 
 .site-footer {
   border-top: 1px solid var(--rule);
