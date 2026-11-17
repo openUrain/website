@@ -75,9 +75,10 @@ const { product } = Astro.props;
           <article class="platform-card">
             <span class="platform-state">Developer preview · unsigned</span>
             <h3>iPhone / iOS</h3>
-            <p>iOS 16.4+ · v0.1.5 test IPA. Download the unsigned build from GitHub Actions and sign it locally with a free Apple Account. Not an App Store or TestFlight release.</p>
-            <a class="action action-secondary" href={product.iosBuildUrl}>View iOS builds (GitHub access required) <Arrow direction="diagonal" /></a>
-            {product.iosInstallGuideUrl && <a class="platform-link" href={product.iosInstallGuideUrl}>Windows sideload installation guide <Arrow direction="diagonal" /></a>}
+            <p>iOS 16.4+ · v0.1.5 unsigned test IPA, hosted on openUrain R2. Sign it yourself with a free Apple Account and Sideloadly. This is not an App Store or TestFlight release and cannot be installed by simply tapping the IPA.</p>
+            <a class="action action-secondary" href={product.iosBuildUrl}>Download unsigned iOS IPA <Arrow direction="diagonal" /></a>
+            {product.iosInstallGuideUrl && <a class="platform-link" href={product.iosInstallGuideUrl}>Free installation guide <Arrow direction="diagonal" /></a>}
+            {product.iosActionsUrl && <a class="platform-link" href={product.iosActionsUrl}>GitHub Actions build history · repository access required <Arrow direction="diagonal" /></a>}
           </article>
         </div>
       </section>
