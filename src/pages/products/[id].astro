@@ -66,11 +66,11 @@ const { product } = Astro.props;
         <h2 class="section-title" id="platforms-title">Choose your platform.</h2>
         <div class="platform-grid">
           <article class="platform-card">
-            <span class="platform-state">Public Windows installer</span>
+            <span class="platform-state">Windows · v0.1.5</span>
             <h3>Windows</h3>
-            <p>Windows 10 / 11 · x64 · v0.1.4 on public R2. Latest v0.1.5 is in the private GitHub Release.</p>
+            <p>Windows 10 / 11 · x64 · v0.1.5 installer hosted on openUrain R2.</p>
             <a class="action action-primary" href={product.downloadUrl}>Download Windows installer <Arrow direction="diagonal" /></a>
-            {product.windowsLatestUrl && <a class="platform-link" href={product.windowsLatestUrl}>Latest v0.1.5 · GitHub access required <Arrow direction="diagonal" /></a>}
+            {product.windowsLatestUrl && <a class="platform-link" href={product.windowsLatestUrl}>GitHub Release mirror · repository access required <Arrow direction="diagonal" /></a>}
           </article>
           <article class="platform-card">
             <span class="platform-state">Developer preview · unsigned</span>
