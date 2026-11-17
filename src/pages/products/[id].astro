@@ -61,6 +61,28 @@ const { product } = Astro.props;
       </div>
     </div>
 
+    {product.downloadUrl && product.iosBuildUrl && (
+      <section class="container platform-section" id="platforms" aria-labelledby="platforms-title">
+        <h2 class="section-title" id="platforms-title">Choose your platform.</h2>
+        <div class="platform-grid">
+          <article class="platform-card">
+            <span class="platform-state">Stable release</span>
+            <h3>Windows</h3>
+            <p>Windows 10 / 11 · x64 · v0.1.5</p>
+            <a class="action action-primary" href={product.downloadUrl}>Download Windows installer <Arrow direction="diagonal" /></a>
+            {product.windowsMirrorUrl && <a class="platform-link" href={product.windowsMirrorUrl}>Older R2 installer · v0.1.4 <Arrow direction="diagonal" /></a>}
+          </article>
+          <article class="platform-card">
+            <span class="platform-state">Developer preview · unsigned</span>
+            <h3>iPhone / iOS</h3>
+            <p>iOS 16.4+ · v0.1.5 test IPA. Download the unsigned build from GitHub Actions and sign it locally with a free Apple Account. Not an App Store or TestFlight release.</p>
+            <a class="action action-secondary" href={product.iosBuildUrl}>View iOS builds (GitHub access required) <Arrow direction="diagonal" /></a>
+            {product.iosInstallGuideUrl && <a class="platform-link" href={product.iosInstallGuideUrl}>Windows sideload installation guide <Arrow direction="diagonal" /></a>}
+          </article>
+        </div>
+      </section>
+    )}
+
     <div class="container product-details">
       {product.featureGroups.map((group, index) => (
         <section class="editorial-grid feature-group" aria-labelledby={`feature-group-${index}`}>
