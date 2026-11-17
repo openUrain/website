@@ -30,11 +30,11 @@ Then open http://localhost:8080/. No npm install is required for the product web
 
 ## Product copy and links
 
-- Windows download is pinned to the **v0.1.4** public R2 URL already used on openUrain. Update the URL and release label together when a newer stable installer is approved.
+- The Windows stable download points to the **v0.1.5 GitHub Release EXE** and a separate **older v0.1.4 R2 installer** is labeled as such. Do not invent a v0.1.5 R2 URL until that object has been uploaded and verified.
 - The logo is served from this site’s own public directory.
 - Long-term ordinary history lives in local SQLite. Text delivery defaults to 72 hours. Attachment availability and automatic cleanup depend on deployment settings.
 - Do not claim that **normal online conversations** are end-to-end encrypted. Private LAN chat is a distinct opt-in mode and does not fall back to the internet. Do not imply that offline devices can recover expired server content.
-- Cross-platform mobile availability is a roadmap goal, **not** a shipped download.
+- The iPhone **v0.1.5 testing preview** is an **unsigned GitHub Actions IPA artifact**, not an App Store or TestFlight release; users with repository access can retrieve the artifact and sign it locally. Do not present it as a tap-to-install publicly distributed IPA. iPad-specific layout and Android remain separate future work.
 - Screenshots show the real Windows client from earlier tests. The [chat and file view](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue35/chat-files.png) and [private LAN view](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue26-private.png) are WebP exports of existing repository assets.
 
 ## Review checklist
