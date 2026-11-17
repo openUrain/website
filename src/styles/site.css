@@ -395,6 +395,13 @@ a:focus-visible {
   text-wrap: balance;
 }
 
+.product-availability {
+  color: var(--product-body);
+  font-size: .875rem;
+  font-weight: 625;
+  margin-top: .875rem;
+}
+
 .product-description {
   max-width: 42ch;
   margin-top: 1rem;
