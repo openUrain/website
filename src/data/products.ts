@@ -13,7 +13,7 @@ export interface Product {
   repository: string;
   website?: string;
   downloadUrl?: string;
-  windowsMirrorUrl?: string;
+  windowsLatestUrl?: string;
   iosBuildUrl?: string;
   iosInstallGuideUrl?: string;
   featureGroups: readonly {
@@ -41,8 +41,8 @@ export const products = [
     highlights: ['Enterprise Self-Hosting', 'Private LAN Chat'],
     repository: 'https://github.com/openUrain/Zibblu',
     website: 'https://zibblu.openurain.com/',
-    downloadUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe',
-    windowsMirrorUrl: 'https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe',
+    downloadUrl: 'https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe',
+    windowsLatestUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe',
     iosBuildUrl: 'https://github.com/openUrain/Zibblu/actions/workflows/ios.yml',
     iosInstallGuideUrl: 'https://github.com/openUrain/Zibblu/blob/main/README.md#test-on-your-iphone-from-windows-11',
     featureGroups: [
