@@ -30,7 +30,7 @@ Then open http://localhost:8080/. No npm install is required for the product web
 
 ## Product copy and links
 
-- The public Windows download remains the **v0.1.4 R2 installer**. The newer **v0.1.5 GitHub Release EXE** requires access to the private Zibblu repository and is labeled separately. Do not invent a v0.1.5 R2 URL until the object is uploaded and verified.
+- The Owner reports that the **Windows v0.1.5 installer and checksum are uploaded to R2**, using the existing versioned key convention under `zibblu/windows/v0.1.5/`. The public CTA points to this v0.1.5 R2 key; verify HTTP 200, Content-Type, size and SHA-256 before merging. The GitHub v0.1.5 release is an alternative requiring private repository access.
 - The logo is served from this site’s own public directory.
 - Long-term ordinary history lives in local SQLite. Text delivery defaults to 72 hours. Attachment availability and automatic cleanup depend on deployment settings.
 - Do not claim that **normal online conversations** are end-to-end encrypted. Private LAN chat is a distinct opt-in mode and does not fall back to the internet. Do not imply that offline devices can recover expired server content.
