@@ -13,6 +13,9 @@ export interface Product {
   repository: string;
   website?: string;
   downloadUrl?: string;
+  windowsMirrorUrl?: string;
+  iosBuildUrl?: string;
+  iosInstallGuideUrl?: string;
   featureGroups: readonly {
     title: string;
     features: readonly { title: string; description: string }[];
@@ -24,9 +27,9 @@ export const products = [
     id: 'zibblu',
     name: 'Zibblu',
     tagline: 'Chat freely. Share privately.',
-    summary: 'A Windows messenger with local chat history, resumable file sharing, and AI you authorize one request at a time.',
+    summary: 'Windows messaging, with an iPhone testing preview. Local-first history, resumable files and AI requests you approve.',
     description: 'Host ordinary chats on a server your organization controls. Open a separate encrypted LAN session for private text.',
-    platform: 'Windows desktop app',
+    platform: 'Windows 10 / 11 · iPhone preview (iOS 16.4+)',
     icon: '/brand/zibblu.png',
     artwork: {
       src: '/images/zibblu-chat.webp',
@@ -38,7 +41,10 @@ export const products = [
     highlights: ['Enterprise Self-Hosting', 'Private LAN Chat'],
     repository: 'https://github.com/openUrain/Zibblu',
     website: 'https://zibblu.openurain.com/',
-    downloadUrl: 'https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe',
+    downloadUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe',
+    windowsMirrorUrl: 'https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe',
+    iosBuildUrl: 'https://github.com/openUrain/Zibblu/actions/workflows/ios.yml',
+    iosInstallGuideUrl: 'https://github.com/openUrain/Zibblu/blob/main/README.md#test-on-your-iphone-from-windows-11',
     featureGroups: [
       {
         title: 'Where messages travel',
