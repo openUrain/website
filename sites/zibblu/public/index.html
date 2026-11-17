@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#faf8ff">
-  <meta name="description" content="Zibblu is a Windows messenger with enterprise self-hosting, separate private LAN chat, local-first history, file sharing, and read-only AI.">
+  <meta name="description" content="Zibblu for Windows, with an iPhone testing preview. Self-hosted messaging, private LAN chat, local-first history and file sharing.">
   <title>Zibblu — Chat freely. Share privately.</title>
   <link rel="canonical" href="https://zibblu.openurain.com/">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -43,10 +43,10 @@
         <h1 id="hero-title">Chat freely. <span>Share privately.</span></h1>
         <p>Run everyday chats on a server your organization controls. Start a separate encrypted conversation on your local network when you need it.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#download">Get Zibblu for Windows <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary" href="#download">Choose your platform <span aria-hidden="true">↓</span></a>
           <a class="inline-link" href="#self-host">See how it works <span aria-hidden="true">↓</span></a>
         </div>
-        <p class="release-note">Windows 10 / 11 · x64 · v0.1.4</p>
+        <p class="release-note">Windows v0.1.5 stable · iPhone v0.1.5 unsigned preview</p>
       </div>
 
       <figure class="hero-figure">
@@ -137,14 +137,33 @@
     </section>
 
     <section id="download" class="download" aria-labelledby="download-title">
-      <div class="shell download-layout">
-        <div>
-          <h2 id="download-title">Get Zibblu for Windows.</h2>
-          <p>Windows 10 / 11 · x64 · v0.1.4</p>
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="download-title">Choose your platform.</h2>
+          <p>Two distinct builds, two installation paths. Pick the one that matches your device.</p>
         </div>
-        <div class="download-actions">
-          <a class="button button-primary" href="https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe">Download installer <span aria-hidden="true">↓</span></a>
-          <a class="inline-link" href="https://download.openurain.com/zibblu/windows/v0.1.4/SHA256SUMS.txt">Verify SHA-256 <span aria-hidden="true">↗</span></a>
+        <div class="downloads-grid">
+          <article class="download-card" aria-labelledby="windows-download-title">
+            <span class="badge">Stable release</span>
+            <h3 id="windows-download-title">Windows</h3>
+            <p>Windows 10 / 11 · x64 · v0.1.5</p>
+            <p>Ready-to-run EXE installer from the official GitHub Release.</p>
+            <div class="download-actions">
+              <a class="button button-primary" href="https://github.com/openUrain/Zibblu/releases/download/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe">Download Windows EXE <span aria-hidden="true">↓</span></a>
+              <a class="inline-link" href="https://github.com/openUrain/Zibblu/releases/tag/v0.1.5">Release &amp; checksums <span aria-hidden="true">↗</span></a>
+              <a class="inline-link" href="https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe">Older R2 installer · v0.1.4 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="download-card" aria-labelledby="ios-download-title">
+            <span class="badge">Developer preview · unsigned</span>
+            <h3 id="ios-download-title">iPhone / iOS</h3>
+            <p>iOS 16.4+ · v0.1.5 testing build</p>
+            <p>The IPA is an unsigned GitHub Actions artifact, not a publicly installable App Store or TestFlight release. Sign locally using a free Apple Account and Sideloadly; GitHub repository access is required.</p>
+            <div class="download-actions">
+              <a class="button button-secondary" href="https://github.com/openUrain/Zibblu/actions/workflows/ios.yml">Get unsigned IPA (GitHub) <span aria-hidden="true">↗</span></a>
+              <a class="inline-link" href="https://github.com/openUrain/Zibblu/blob/main/README.md#test-on-your-iphone-from-windows-11">Windows sideload guide <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
