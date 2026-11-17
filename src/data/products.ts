@@ -15,6 +15,7 @@ export interface Product {
   downloadUrl?: string;
   windowsLatestUrl?: string;
   iosBuildUrl?: string;
+  iosActionsUrl?: string;
   iosInstallGuideUrl?: string;
   featureGroups: readonly {
     title: string;
@@ -43,7 +44,8 @@ export const products = [
     website: 'https://zibblu.openurain.com/',
     downloadUrl: 'https://download.openurain.com/zibblu/windows/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe',
     windowsLatestUrl: 'https://github.com/openUrain/Zibblu/releases/download/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe',
-    iosBuildUrl: 'https://github.com/openUrain/Zibblu/actions/workflows/ios.yml',
+    iosBuildUrl: 'https://download.openurain.com/zibblu/ios/v0.1.5/Zibblu-iOS-arm64-unsigned.ipa',
+    iosActionsUrl: 'https://github.com/openUrain/Zibblu/actions/workflows/ios.yml',
     iosInstallGuideUrl: 'https://github.com/openUrain/Zibblu/blob/main/README.md#test-on-your-iphone-from-windows-11',
     featureGroups: [
       {
