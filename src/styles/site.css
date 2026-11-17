@@ -395,6 +395,13 @@ a:focus-visible {
   text-wrap: balance;
 }
 
+.product-availability {
+  color: var(--product-body);
+  font-size: .875rem;
+  font-weight: 625;
+  margin-top: .875rem;
+}
+
 .product-description {
   max-width: 42ch;
   margin-top: 1rem;
@@ -497,6 +504,59 @@ a:focus-visible {
   line-height: 1.5;
 }
 
+
+
+.platform-section {
+  padding-block: clamp(2rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--product-rule);
+}
+
+.platform-section .section-title { font-size: clamp(2rem, 3.6vw, 3.25rem); }
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .75rem;
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--product-rule);
+  border-radius: .75rem;
+  background: var(--cold-white);
+}
+
+.platform-card h3 { font-size: 1.5rem; letter-spacing: -.03em; line-height: 1.2; }
+.platform-card p { color: var(--product-body); max-width: 58ch; }
+.platform-card .action { margin-top: auto; }
+.platform-state {
+  color: var(--accent);
+  background: var(--product-tint);
+  border-radius: .25rem;
+  padding: .25rem .5rem;
+  font-size: .8125rem;
+  font-weight: 650;
+}
+.platform-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  color: var(--accent);
+  font-size: .875rem;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.platform-link svg { width: .875rem; height: .875rem; }
+
+@media (max-width: 40rem) {
+  .platform-grid { grid-template-columns: minmax(0, 1fr); }
+}
 
 .product-details {
   padding-block: var(--section-space);

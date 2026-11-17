@@ -25,6 +25,7 @@ const ctaId = `${product.id}-cta`;
       <ul class="product-highlights" aria-label="Key features">
         {product.highlights.map((highlight) => <li>{highlight}</li>)}
       </ul>
+      <p class="product-availability">{product.platform}</p>
       <p class="product-description">{product.summary}</p>
       <span class="product-preview-cta" id={ctaId}>Explore {product.name} <Arrow /></span>
     </div>

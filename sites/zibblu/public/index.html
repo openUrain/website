@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#faf8ff">
-  <meta name="description" content="Zibblu is a Windows messenger with enterprise self-hosting, separate private LAN chat, local-first history, file sharing, and read-only AI.">
+  <meta name="description" content="Zibblu for Windows, with an iPhone testing preview. Self-hosted messaging, private LAN chat, local-first history and file sharing.">
   <title>Zibblu — Chat freely. Share privately.</title>
   <link rel="canonical" href="https://zibblu.openurain.com/">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -43,10 +43,10 @@
         <h1 id="hero-title">Chat freely. <span>Share privately.</span></h1>
         <p>Run everyday chats on a server your organization controls. Start a separate encrypted conversation on your local network when you need it.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#download">Get Zibblu for Windows <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary" href="#download">Choose your platform <span aria-hidden="true">↓</span></a>
           <a class="inline-link" href="#self-host">See how it works <span aria-hidden="true">↓</span></a>
         </div>
-        <p class="release-note">Windows 10 / 11 · x64 · v0.1.4</p>
+        <p class="release-note">Windows v0.1.5 · iPhone unsigned preview</p>
       </div>
 
       <figure class="hero-figure">
@@ -69,11 +69,11 @@
 
           <figure class="diagram">
             <div class="diagram-track" aria-hidden="true">
-              <span>Windows<br>client</span>
+              <span>Zibblu<br>client</span>
               <span class="diagram-arrow">↔</span>
               <span class="diagram-emphasis">Company<br>server</span>
               <span class="diagram-arrow">↔</span>
-              <span>Windows<br>client</span>
+              <span>Zibblu<br>client</span>
             </div>
             <figcaption>Ordinary chat travels via your company’s server over HTTPS. The server can read messages and files during online availability. Ordinary chats have no end-to-end encryption.</figcaption>
           </figure>
@@ -89,9 +89,9 @@
 
           <figure class="diagram">
             <div class="diagram-track diagram-direct" aria-hidden="true">
-              <span>Windows<br>client</span>
+              <span>Zibblu<br>client</span>
               <span class="diagram-arrow">← Encrypted QUIC →</span>
-              <span>Windows<br>client</span>
+              <span>Zibblu<br>client</span>
             </div>
             <figcaption>Private text goes directly from device to device. When the session ends, Zibblu clears its in-memory conversation. Screenshots, copies and OS-level traces are outside that cleanup.</figcaption>
           </figure>
@@ -137,14 +137,43 @@
     </section>
 
     <section id="download" class="download" aria-labelledby="download-title">
-      <div class="shell download-layout">
-        <div>
-          <h2 id="download-title">Get Zibblu for Windows.</h2>
-          <p>Windows 10 / 11 · x64 · v0.1.4</p>
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="download-title">Choose your platform.</h2>
+          <p>Two distinct builds, two installation paths. Pick the one that matches your device.</p>
         </div>
-        <div class="download-actions">
-          <a class="button button-primary" href="https://download.openurain.com/zibblu/windows/v0.1.4/Zibblu_0.1.4_x64_Client_Setup.exe">Download installer <span aria-hidden="true">↓</span></a>
-          <a class="inline-link" href="https://download.openurain.com/zibblu/windows/v0.1.4/SHA256SUMS.txt">Verify SHA-256 <span aria-hidden="true">↗</span></a>
+        <div class="downloads-grid">
+          <article class="download-card" aria-labelledby="windows-download-title">
+            <span class="badge">Public installer</span>
+            <h3 id="windows-download-title">Windows</h3>
+            <p>Windows 10 / 11 · x64 · v0.1.5</p>
+            <p>Windows v0.1.5 EXE hosted on openUrain R2. The GitHub Release is an alternative for repository collaborators.</p>
+            <div class="download-actions">
+              <a class="button button-primary" href="https://download.openurain.com/zibblu/windows/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe">Download Windows EXE · v0.1.5 <span aria-hidden="true">↓</span></a>
+              <a class="inline-link" href="https://download.openurain.com/zibblu/windows/v0.1.5/SHA256SUMS.txt">Verify public installer · SHA-256 <span aria-hidden="true">↗</span></a>
+              <a class="inline-link" href="https://github.com/openUrain/Zibblu/releases/tag/v0.1.5">GitHub Release mirror · repository access required <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="download-card" aria-labelledby="ios-download-title">
+            <span class="badge">Developer preview · unsigned</span>
+            <h3 id="ios-download-title">iPhone / iOS</h3>
+            <p>iOS 16.4+ · v0.1.5 testing build</p>
+            <p>Download the unsigned test IPA from openUrain R2, then sign and install it yourself using Sideloadly and a free Apple Account. This is not an App Store or TestFlight release; tapping the IPA on your phone will not install it.</p>
+            <div class="download-actions">
+              <a class="button button-secondary" href="https://download.openurain.com/zibblu/ios/v0.1.5/Zibblu-iOS-arm64-unsigned.ipa">Download unsigned iOS IPA <span aria-hidden="true">↓</span></a>
+              <details class="ios-install-steps" id="ios-install-guide">
+                <summary>How to install on your iPhone for free</summary>
+                <ol>
+                  <li>On your Windows PC, download the unsigned IPA above and install <a href="https://sideloadly.io/">Sideloadly</a>.</li>
+                  <li>Connect your iPhone by USB, unlock it and choose <strong>Trust This Computer</strong>.</li>
+                  <li>Select your iPhone and the IPA in Sideloadly, then use your free Apple Account to sign and install it.</li>
+                  <li>On the iPhone, enable <strong>Settings → Privacy &amp; Security → Developer Mode</strong> if prompted, then trust the developer profile under <strong>Settings → General → VPN &amp; Device Management</strong> if required.</li>
+                </ol>
+                <p>Free Apple Account signing typically expires after 7 days. Refresh using the same Apple Account and effective Bundle ID without deleting the app; uninstalling can erase local SQLite chat history.</p>
+              </details>
+              <a class="inline-link" href="https://github.com/openUrain/Zibblu/actions/workflows/ios.yml">GitHub Actions history · repository access required <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
