@@ -161,7 +161,16 @@
             <p>Download the unsigned test IPA from openUrain R2, then sign and install it yourself using Sideloadly and a free Apple Account. This is not an App Store or TestFlight release; tapping the IPA on your phone will not install it.</p>
             <div class="download-actions">
               <a class="button button-secondary" href="https://download.openurain.com/zibblu/ios/v0.1.5/Zibblu-iOS-arm64-unsigned.ipa">Download unsigned iOS IPA <span aria-hidden="true">↓</span></a>
-              <a class="inline-link" href="https://github.com/openUrain/Zibblu/blob/main/README.md#test-on-your-iphone-from-windows-11">Free installation guide (GitHub) <span aria-hidden="true">↗</span></a>
+              <details class="ios-install-steps" id="ios-install-guide">
+                <summary>How to install on your iPhone for free</summary>
+                <ol>
+                  <li>On your Windows PC, download the unsigned IPA above and install <a href="https://sideloadly.io/">Sideloadly</a>.</li>
+                  <li>Connect your iPhone by USB, unlock it and choose <strong>Trust This Computer</strong>.</li>
+                  <li>Select your iPhone and the IPA in Sideloadly, then use your free Apple Account to sign and install it.</li>
+                  <li>On the iPhone, enable <strong>Settings → Privacy &amp; Security → Developer Mode</strong> if prompted, then trust the developer profile under <strong>Settings → General → VPN &amp; Device Management</strong> if required.</li>
+                </ol>
+                <p>Free Apple Account signing typically expires after 7 days. Refresh using the same Apple Account and effective Bundle ID without deleting the app; uninstalling can erase local SQLite chat history.</p>
+              </details>
               <a class="inline-link" href="https://github.com/openUrain/Zibblu/actions/workflows/ios.yml">GitHub Actions history · repository access required <span aria-hidden="true">↗</span></a>
             </div>
           </article>
