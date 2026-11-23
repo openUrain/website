@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#faf8ff">
-  <meta name="description" content="Zibblu for Windows, with an iPhone testing preview. Self-hosted messaging, private LAN chat, local-first history and file sharing.">
+  <meta name="theme-color" content="#171421">
+  <meta name="description" content="Zibblu is a calmer place for messages, file sharing, and private LAN conversations. Download for Windows.">
   <title>Zibblu — Chat freely. Share privately.</title>
   <link rel="canonical" href="https://zibblu.openurain.com/">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Zibblu">
   <meta property="og:title" content="Zibblu — Chat freely. Share privately.">
-  <meta property="og:description" content="Host everyday chats on your own server. Start separate encrypted text sessions on your local network.">
+  <meta property="og:description" content="A calmer place for conversations, files, and private moments. Get Zibblu for Windows.">
   <meta property="og:url" content="https://zibblu.openurain.com/">
-  <meta property="og:image" content="https://zibblu.openurain.com/images/zibblu-chat.webp">
-  <meta property="og:image:alt" content="Zibblu Windows client showing chat and shared files in a test conversation">
+  <meta property="og:image" content="https://raw.githubusercontent.com/openUrain/Zibblu/main/assets/showcase/02-desktop-chat.png">
+  <meta property="og:image:alt" content="Zibblu Windows desktop client with conversations and a message composer">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/styles.css">
   <script src="/site.js" defer></script>
@@ -25,155 +25,115 @@
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="/" aria-label="Zibblu home">
-        <img src="/images/zibblu.png" alt="" width="32" height="32">
-        Zibblu
+        <img src="/images/zibblu.png" width="32" height="32" alt="">
+        <span>Zibblu</span>
       </a>
-      <nav aria-label="Main navigation">
-        <a href="#self-host">Self-hosting</a>
-        <a href="#privacy">Private LAN</a>
-        <a href="#features">Features</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#experience">Experience</a>
+        <a href="#private">Private LAN</a>
+        <a href="#self-host">Self-host</a>
       </nav>
-      <a class="button button-secondary nav-download" href="#download">Get Zibblu</a>
+      <a class="nav-download" href="#download">Get Zibblu <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="shell hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <h1 id="hero-title">Chat freely. <span>Share privately.</span></h1>
-        <p>Run everyday chats on a server your organization controls. Start a separate encrypted conversation on your local network when you need it.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#download">Choose your platform <span aria-hidden="true">↓</span></a>
-          <a class="inline-link" href="#self-host">See how it works <span aria-hidden="true">↓</span></a>
+    <section class="hero">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A different kind of messenger</span>
+          <h1>More than<br>a <em>message.</em></h1>
+          <p>Good conversations deserve a simple place to live. Chat, share, and keep what matters close—without the noise.</p>
+          <div class="hero-actions">
+            <a class="button button-light" href="#download">Download for Windows <span aria-hidden="true">↓</span></a>
+            <a class="link-muted" href="#experience">Take a look <span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="hero-footnote">Windows 10 / 11 · x64 · v0.1.10</div>
         </div>
-        <p class="release-note">Windows v0.1.5 · iPhone unsigned preview</p>
-      </div>
-
-      <figure class="hero-figure">
-        <img src="/images/zibblu-chat.webp" alt="Zibblu Windows client showing a conversation with attachment cards and an inline image preview" width="1188" height="970" fetchpriority="high">
-        <figcaption>Windows client · Chat and file sharing</figcaption>
-      </figure>
-    </section>
-
-    <section class="shell section modes" aria-labelledby="modes-title">
-      <div class="section-heading">
-        <h2 id="modes-title">Two ways to chat.</h2>
-        <p>Choose where ordinary messages are delivered, or open a separate private LAN session for text.</p>
-      </div>
-
-      <div class="mode-grid">
-        <article class="mode-card hosted" id="self-host" aria-labelledby="hosted-title">
-          <span class="badge">Your infrastructure</span>
-          <h3 id="hosted-title">Enterprise Self-Hosting</h3>
-          <p>Deploy Zibblu Online and PostgreSQL with Docker Compose. Your team signs in to your HTTPS server, which delivers internal messages and files without routing them through official Zibblu servers.</p>
-
-          <figure class="diagram">
-            <div class="diagram-track" aria-hidden="true">
-              <span>Zibblu<br>client</span>
-              <span class="diagram-arrow">↔</span>
-              <span class="diagram-emphasis">Company<br>server</span>
-              <span class="diagram-arrow">↔</span>
-              <span>Zibblu<br>client</span>
-            </div>
-            <figcaption>Ordinary chat travels via your company’s server over HTTPS. The server can read messages and files during online availability. Ordinary chats have no end-to-end encryption.</figcaption>
-          </figure>
-
-          <a class="inline-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/ONLINE_DEPLOYMENT.md">Deployment guide on GitHub <span aria-hidden="true">↗</span></a>
-          <small class="repository-note">Zibblu repository access required.</small>
-        </article>
-
-        <article class="mode-card private" id="privacy" aria-labelledby="private-title">
-          <span class="badge">LAN only</span>
-          <h3 id="private-title">Private LAN Chat</h3>
-          <p>Participants opt in to a separate text session and their devices verify each other. An encrypted direct connection carries messages across a reachable LAN, with no server relay or internet fallback.</p>
-
-          <figure class="diagram">
-            <div class="diagram-track diagram-direct" aria-hidden="true">
-              <span>Zibblu<br>client</span>
-              <span class="diagram-arrow">← Encrypted QUIC →</span>
-              <span>Zibblu<br>client</span>
-            </div>
-            <figcaption>Private text goes directly from device to device. When the session ends, Zibblu clears its in-memory conversation. Screenshots, copies and OS-level traces are outside that cleanup.</figcaption>
-          </figure>
-
-          <a class="inline-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md#private-lan-sessions">Security details on GitHub <span aria-hidden="true">↗</span></a>
-          <small class="repository-note">Zibblu repository access required.</small>
-        </article>
+        <div class="hero-visual">
+          <div class="visual-label"><span class="square" aria-hidden="true"></span> The Zibblu desktop experience</div>
+          <div class="screenshot-screen hero-screen">
+            <img src="https://raw.githubusercontent.com/openUrain/Zibblu/main/assets/showcase/02-desktop-chat.png" alt="Zibblu Windows desktop client with chat list, rich messages and a composer" width="1185" height="786" fetchpriority="high">
+          </div>
+          <span class="visual-index" aria-hidden="true">01 / 04</span>
+        </div>
       </div>
     </section>
 
-    <section class="private-preview" aria-labelledby="private-preview-title">
-      <div class="shell private-preview-layout">
-        <div>
-          <h2 id="private-preview-title">A separate space for private chat.</h2>
-          <p>Open a private invitation from a conversation or from Nearby devices. Once accepted, it opens in a dedicated dark view, separate from your ordinary chat history.</p>
-          <p>The account service issues credentials for device verification. Private text stays on the direct connection.</p>
+    <section class="intro shell" id="experience" aria-labelledby="intro-title">
+      <div class="section-kicker">01 — Everyday</div>
+      <div class="intro-main">
+        <h2 id="intro-title">Everything in its <em>right place.</em></h2>
+        <p>Familiar chat, practical file sharing, and a thoughtful desktop layout. The important part is the conversation, not the interface around it.</p>
+      </div>
+    </section>
+
+    <section class="feature-story shell" aria-label="Zibblu desktop features">
+      <div class="story-image">
+        <img src="https://raw.githubusercontent.com/openUrain/Zibblu/main/assets/showcase/04-compact-chat.png" width="462" height="784" loading="lazy" decoding="async" alt="Zibblu's narrow desktop window showing rich formatted messages and chat controls">
+      </div>
+      <div class="story-copy">
+        <span class="small-heading">CONVERSATION FIRST</span>
+        <h3>Make space<br>for the words.</h3>
+        <p>Direct messages, group chats, rich text, and a composer that stays out of your way. Received messages live in a local SQLite profile, ready to revisit offline.</p>
+        <div class="story-line"></div>
+        <span class="small-heading">FILES THAT KEEP UP</span>
+        <h3>Send more.<br>Start again.</h3>
+        <p>Share files and folders, resume interrupted downloads, and verify completed transfers. Your conversation and files belong together.</p>
+      </div>
+    </section>
+
+    <section class="private-section" id="private" aria-labelledby="private-heading">
+      <div class="shell private-layout">
+        <div class="private-copy">
+          <span class="section-kicker">02 — Private LAN</span>
+          <h2 id="private-heading">Some things<br>stay <em>between us.</em></h2>
+          <p>When you're on a reachable local network, you can invite another verified device into a separate encrypted text session. It travels directly between devices—never through a message relay.</p>
+          <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md#private-lan-sessions">Understand private chat <span aria-hidden="true">↗</span></a>
+          <div class="privacy-detail">
+            <span class="small-heading">A CLEAR DISTINCTION</span>
+            <p>Ordinary chats use your selected online server and are not end-to-end encrypted. Private LAN text is a separate, opt-in mode with no internet fallback; ending it clears app-managed in-memory text, not screenshots or OS traces.</p>
+          </div>
         </div>
-        <figure>
-          <img src="/images/zibblu-private.webp" alt="Active Private LAN Chat in the Zibblu Windows client, with a dark conversation pane and an End session control" width="1400" height="930" loading="lazy" decoding="async">
-          <figcaption>Windows client · Active private LAN session</figcaption>
+        <figure class="private-art">
+          <div class="private-window">
+            <img src="https://raw.githubusercontent.com/openUrain/Zibblu/main/assets/showcase/03-private-lan.png" width="462" height="786" alt="Zibblu dark Private LAN screen while finding devices" loading="lazy" decoding="async">
+          </div>
+          <figcaption>Private LAN · Device discovery</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="shell section features" id="features" aria-labelledby="features-title">
-      <div class="section-heading">
-        <h2 id="features-title">Everyday chat, built around your device.</h2>
-      </div>
-      <div class="feature-grid">
-        <article id="local-first">
-          <h3>Local-first history</h3>
-          <p>Received ordinary chats stay in SQLite on the device that received them. Browse that history when an active session goes offline. A new device can receive eligible pending deliveries and new messages.</p>
-        </article>
-        <article>
-          <h3>File sharing</h3>
-          <p>Send files and folders, resume interrupted transfers and verify completed downloads. Your server’s policy determines how long a copy is available to download.</p>
-        </article>
-        <article>
-          <h3>Read-only AI</h3>
-          <p>Mention your assistant in an ordinary chat. Review the provider, selected messages and optional text files before sending each request. Cloud AI has no access to private LAN chats.</p>
-        </article>
+    <section class="selfhost-section shell" id="self-host" aria-labelledby="selfhost-title">
+      <div class="section-kicker">03 — Your infrastructure</div>
+      <div class="selfhost-grid">
+        <h2 id="selfhost-title">Your space.<br>Your server.</h2>
+        <div>
+          <p>Want control over where everyday messages are delivered? Deploy Zibblu Online with PostgreSQL on infrastructure you manage. Your members connect to your HTTPS server instead of the default Zibblu Online service.</p>
+          <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/ONLINE_DEPLOYMENT.md#enterprise-self-hosting">Explore self-hosting <span aria-hidden="true">↗</span></a>
+          <div class="hosting-route" aria-label="Normal chat delivery route">
+            <span>Device</span><span aria-hidden="true">→</span><span>Your server</span><span aria-hidden="true">→</span><span>Device</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="download" class="download" aria-labelledby="download-title">
-      <div class="shell">
-        <div class="section-heading">
-          <h2 id="download-title">Choose your platform.</h2>
-          <p>Two distinct builds, two installation paths. Pick the one that matches your device.</p>
+    <section class="download-section" id="download" aria-labelledby="download-title">
+      <div class="shell download-layout">
+        <div>
+          <span class="section-kicker">04 — Get started</span>
+          <h2 id="download-title">Keep the<br>conversation <em>going.</em></h2>
+          <p>Start on Windows. Your account, conversations and files are just a few clicks away.</p>
         </div>
-        <div class="downloads-grid">
-          <article class="download-card" aria-labelledby="windows-download-title">
-            <span class="badge">Public installer</span>
-            <h3 id="windows-download-title">Windows</h3>
-            <p>Windows 10 / 11 · x64 · v0.1.5</p>
-            <p>Windows v0.1.5 EXE hosted on openUrain R2. The GitHub Release is an alternative for repository collaborators.</p>
-            <div class="download-actions">
-              <a class="button button-primary" href="https://download.openurain.com/zibblu/windows/v0.1.5/Zibblu_0.1.5_x64_Client_Setup.exe">Download Windows EXE · v0.1.5 <span aria-hidden="true">↓</span></a>
-              <a class="inline-link" href="https://download.openurain.com/zibblu/windows/v0.1.5/SHA256SUMS.txt">Verify public installer · SHA-256 <span aria-hidden="true">↗</span></a>
-              <a class="inline-link" href="https://github.com/openUrain/Zibblu/releases/tag/v0.1.5">GitHub Release mirror · repository access required <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="download-card" aria-labelledby="ios-download-title">
-            <span class="badge">Developer preview · unsigned</span>
-            <h3 id="ios-download-title">iPhone / iOS</h3>
-            <p>iOS 16.4+ · v0.1.5 testing build</p>
-            <p>Download the unsigned test IPA from openUrain R2, then sign and install it yourself using Sideloadly and a free Apple Account. This is not an App Store or TestFlight release; tapping the IPA on your phone will not install it.</p>
-            <div class="download-actions">
-              <a class="button button-secondary" href="https://download.openurain.com/zibblu/ios/v0.1.5/Zibblu-iOS-arm64-unsigned.ipa">Download unsigned iOS IPA <span aria-hidden="true">↓</span></a>
-              <details class="ios-install-steps" id="ios-install-guide">
-                <summary>How to install on your iPhone for free</summary>
-                <ol>
-                  <li>On your Windows PC, download the unsigned IPA above and install <a href="https://sideloadly.io/">Sideloadly</a>.</li>
-                  <li>Connect your iPhone by USB, unlock it and choose <strong>Trust This Computer</strong>.</li>
-                  <li>Select your iPhone and the IPA in Sideloadly, then use your free Apple Account to sign and install it.</li>
-                  <li>On the iPhone, enable <strong>Settings → Privacy &amp; Security → Developer Mode</strong> if prompted, then trust the developer profile under <strong>Settings → General → VPN &amp; Device Management</strong> if required.</li>
-                </ol>
-                <p>Free Apple Account signing typically expires after 7 days. Refresh using the same Apple Account and effective Bundle ID without deleting the app; uninstalling can erase local SQLite chat history.</p>
-              </details>
-              <a class="inline-link" href="https://github.com/openUrain/Zibblu/actions/workflows/ios.yml">GitHub Actions history · repository access required <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
+        <div class="download-panel">
+          <span class="small-heading">CURRENT WINDOWS RELEASE</span>
+          <div class="download-head"><strong>v0.1.10</strong><span>Windows 10 / 11 · x64</span></div>
+          <a class="button button-dark" href="https://download.openurain.com/zibblu/windows/v0.1.10/Zibblu_0.1.10_x64_Client_Setup.exe">Download Windows installer <span aria-hidden="true">↓</span></a>
+          <div class="download-links">
+            <a href="https://download.openurain.com/zibblu/windows/v0.1.10/SHA256SUMS.txt">SHA-256 checksum <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/openUrain/Zibblu/releases/tag/v0.1.10">GitHub release <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="download-note">Installer is not code-signed. Microsoft WebView2 may be installed if required. Verify downloaded files against the published checksum.</p>
         </div>
       </div>
     </section>
@@ -181,11 +141,12 @@
 
   <footer class="site-footer">
     <div class="shell footer-row">
-      <p>© <span id="year">2026</span> openUrain</p>
-      <nav aria-label="Footer">
-        <a href="https://github.com/openUrain/Zibblu">Zibblu on GitHub (restricted) <span aria-hidden="true">↗</span></a>
-        <a href="https://openurain.com/">Made by openUrain <span aria-hidden="true">↗</span></a>
+      <div class="footer-brand"><img src="/images/zibblu.png" width="24" height="24" alt=""><strong>Zibblu</strong> <span>Chat freely. Share privately.</span></div>
+      <nav aria-label="Footer navigation">
+        <a href="https://github.com/openUrain/Zibblu">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://openurain.com/">openUrain <span aria-hidden="true">↗</span></a>
       </nav>
+      <small>© <span id="year">2026</span> openUrain</small>
     </div>
   </footer>
 </body>
