@@ -1,47 +1,43 @@
 # Zibblu product website
 
-Independent, static product website for **https://zibblu.openurain.com/**, developed alongside [openUrain/website](https://github.com/openUrain/website). Deliberately no build-time dependencies: `public/` is the complete deployable site.
+Static product site for **https://zibblu.openurain.com/**, deployed independently from the openUrain organization site.
 
-## Architecture and deployment
+## Deployment
 
-**Keep two independent Cloudflare Pages projects.**
+Both sites use [openUrain/website](https://github.com/openUrain/website), but **separate Cloudflare Pages projects**:
 
-| | openUrain | Zibblu |
+| | openUrain organization site | Zibblu site |
 | --- | --- | --- |
-| Pages project | Existing `openurain-site` | Create `zibblu-site` |
-| Git repository | `openUrain/website` | `openUrain/website` |
-| Production branch | `main` | `main` |
-| Root directory | Repository root | `sites/zibblu` |
-| Build command | `npm run build` | `exit 0` (no build required) |
+| Pages project | `openurain-site` | `zibblu-site` |
+| Repository | `openUrain/website` | `openUrain/website` |
+| Branch | `main` | `main` |
+| Root directory | repository root | `sites/zibblu` |
+| Build command | `npm run build` | `exit 0` |
 | Output directory | `dist` | `public` |
-| Custom domain | `openurain.com` | `zibblu.openurain.com` |
+| Domain | `openurain.com` | `zibblu.openurain.com` |
 
-1. Merge the reviewed website PR only when the Zibblu Pages project is ready, or temporarily expect an unavailable target from the main site's Explore link.
-2. In Cloudflare Dashboard → Workers & Pages, create `zibblu-site` from the **same GitHub repo** with the settings above.
-3. In `zibblu-site` → Custom domains, add `zibblu.openurain.com`. Because the domain is already in Cloudflare, let Pages provision and verify the DNS record and certificate; do **not** point the subdomain to the Zibblu Online API.
-4. Confirm HTTPS, assets, responsive layout, 404 behavior, robots and sitemap; check that the openUrain homepage's **Explore Zibblu** navigates to the new root in the same tab.
-5. Leave `zibblu-api.openurain.com`, Cloudflare Tunnel, Win11 Docker/PostgreSQL, R2 downloads, and `openurain-site` settings untouched.
+Do not alter the Zibblu API, Cloudflare Tunnel, R2 object store, or openUrain primary site deployment settings when updating this site.
 
-A quick local preview can run from this directory:
+To preview locally:
+
 ```sh
 python -m http.server 8080 --directory public
 ```
-Then open http://localhost:8080/. No npm install is required for the product website.
 
-## Product copy and links
+## Editorial direction
 
-- The Owner reports that the **Windows v0.1.5 installer and checksum are uploaded to R2**, using the existing versioned key convention under `zibblu/windows/v0.1.5/`. The public CTA points to this v0.1.5 R2 key; verify HTTP 200, Content-Type, size and SHA-256 before merging. The GitHub v0.1.5 release is an alternative requiring private repository access.
-- The logo is served from this site’s own public directory.
-- Long-term ordinary history lives in local SQLite. Text delivery defaults to 72 hours. Attachment availability and automatic cleanup depend on deployment settings.
-- Do not claim that **normal online conversations** are end-to-end encrypted. Private LAN chat is a distinct opt-in mode and does not fall back to the internet. Do not imply that offline devices can recover expired server content.
-- The iPhone **v0.1.5 testing preview** has an **unsigned IPA** at the Owner-provided R2 object URL `https://download.openurain.com/zibblu/ios/v0.1.5/Zibblu-iOS-arm64-unsigned.ipa`. Users can download without going through the private GitHub Actions listing, but must still sign and install it locally, e.g. using Sideloadly and a free Apple Account. This is not an App Store or TestFlight release, nor a tap-to-install IPA. Check the R2 URL's actual HTTP response before merging; this session could not independently fetch the object. iPad-specific layout and Android remain separate future work.
-- Screenshots show the real Windows client from earlier tests. The [chat and file view](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue35/chat-files.png) and [private LAN view](https://github.com/openUrain/Zibblu/blob/v0.1.4/docs/windows-feedback/issue26-private.png) are WebP exports of existing repository assets.
+The site uses a distinct **dark editorial hero → light everyday-chat story → dark private-LAN section → simple self-hosting explanation → Windows download** sequence. The Zibblu violet brand remains; nonessential card grids and unnecessary page furniture are removed.
 
-## Review checklist
+- Product screenshots are taken from [Zibblu's canonical showcase folder](https://github.com/openUrain/Zibblu/tree/main/assets/showcase). The current static site loads them from GitHub raw URLs; review caching/asset availability before production, and consider copying optimized derivatives into `public/images/` when a binary-asset upload route is available.
+- All screenshots are Owner-confirmed redacted test media. The LAN screenshot shows **device discovery**, not a completed private session.
+- The public product website currently displays **Windows only**. This does not delete development support for iOS elsewhere in the repositories.
+- **Windows release:** GitHub's latest published Windows Release checked 2026-11-23 was **v0.1.10**. The CTA uses the corresponding Owner-reported R2 key `zibblu/windows/v0.1.10/Zibblu_0.1.10_x64_Client_Setup.exe` and checksum path. **The R2 hostname could not be reached from this environment; verify HTTP status, size, MIME and checksum match before production merge/deploy.** The verified GitHub Release provides a visible fallback.
+- Ordinary chats are server-routed and are **not end-to-end encrypted**. M2 private LAN text uses authenticated encrypted direct transport with no internet fallback; end-of-session cleanup does not promise to erase screenshots or OS traces. AI copy must match the actual released behavior, not planned issues.
 
-- Desktop and mobile widths (320, 375, 768, 1024, 1440px), no horizontal overflow or text clipping.
-- Keyboard navigation, skip link, readable contrast, semantic headings and accessible links.
-- `prefers-reduced-motion` and no-JS fallback.
-- No page trackers or server-side form submissions.
-- Canonical/OG/robots/sitemap URLs match the production hostname.
-- Cloudflare Pages production and preview deployments succeed without modifying the openUrain build configuration.
+## Acceptance checklist
+
+- Desktop/mobile at 320, 375, 768, 1024, 1440px; keyboard tab order, visible focus, skip link, link purpose and no unexpected horizontal overflow.
+- Reduced-motion behavior, no-JS fallback, correct screenshot labels, image aspect ratios, and no browser console errors.
+- Check release download and SHA-256 against R2 directly; ensure the current version remains correct and no iOS CTA appears.
+- Confirm Cloudflare Pages deploy, HTTPS, canonical, OG image, robots, sitemap and responsive assets in the actual deployed preview.
+- Never describe code review or static inspection as a completed live browser/production test.
