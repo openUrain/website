@@ -3,25 +3,63 @@ import type { Product } from '../data/products';
 
 interface Props {
   artwork: Product['artwork'];
+  secondary?: Product['secondaryArtwork'];
   priority?: boolean;
+  variant?: 'preview' | 'detail';
 }
-const { artwork, priority = false } = Astro.props;
+const { artwork, secondary, priority = false, variant = 'preview' } = Astro.props;
 ---
 <figure
-  class="product-visual"
+  class:list={['product-visual', `product-visual--${variant}`]}
   data-intro={priority ? '' : undefined}
   data-reveal={priority ? undefined : 'artwork'}
+  data-parallax-stage
 >
-  <div class="artwork-frame">
-    <img
-    src={artwork.src}
-    width={artwork.width}
-    height={artwork.height}
-    alt={artwork.alt}
-    loading={priority ? 'eager' : 'lazy'}
-    fetchpriority={priority ? 'high' : undefined}
-    decoding="async"
-    />
+  <div class="artwork-stage">
+    <div class="artwork-aura" aria-hidden="true"></div>
+    <div class="artwork-plinth" aria-hidden="true"></div>
+
+    {secondary && (
+      <div class="artwork-satellite artwork-satellite--lan" data-parallax-depth="-0.65" aria-hidden="true">
+        <img
+          src={secondary.privateLan.src}
+          width={secondary.privateLan.width}
+          height={secondary.privateLan.height}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )}
+
+    {variant === 'detail' && secondary && (
+      <div class="artwork-satellite artwork-satellite--compact" data-parallax-depth="-0.45" aria-hidden="true">
+        <img
+          src={secondary.compact.src}
+          width={secondary.compact.width}
+          height={secondary.compact.height}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )}
+
+    <div class="artwork-frame" data-parallax-depth="0.55">
+      <div class="artwork-rim" aria-hidden="true"></div>
+      <img
+        src={artwork.src}
+        width={artwork.width}
+        height={artwork.height}
+        alt={artwork.alt}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
+        decoding="async"
+      />
+    </div>
   </div>
-  <figcaption>{artwork.caption}</figcaption>
+  <figcaption>
+    <span class="caption-dot" aria-hidden="true"></span>
+    <span>{artwork.caption}</span>
+  </figcaption>
 </figure>

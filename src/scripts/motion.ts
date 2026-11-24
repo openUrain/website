@@ -1,7 +1,38 @@
+export {};
+
 const motionPreference = window.matchMedia('(prefers-reduced-motion: no-preference)');
-const revealStart: Record<string, Keyframe | undefined> = {
-  artwork: { opacity: .68, translate: '0 12px' },
-  'community-link': { opacity: .88, translate: '8px 0' },
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+/* Sticky optical header elevation state */
+function initHeaderElevation() {
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  if (!header) return;
+
+  let ticking = false;
+  const update = () => {
+    header.dataset.scrolled = window.scrollY > 12 ? 'true' : 'false';
+    ticking = false;
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  update();
+}
+
+/* Scroll-driven reveal choreography via Web Animations API */
+const revealKeyframes: Record<string, Keyframe> = {
+  artwork: { opacity: 0, transform: 'translateY(24px) scale(0.985)' },
+  product: { opacity: 0, transform: 'translateY(20px)' },
+  principle: { opacity: 0, transform: 'translateY(14px)' },
+  'community-link': { opacity: 0, transform: 'translateX(12px)' },
 };
 
 function observeReveals() {
@@ -16,30 +47,32 @@ function observeReveals() {
     running.delete(target);
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    let principleDelay = 0;
-    for (const { target, isIntersecting, boundingClientRect, rootBounds } of entries) {
-      if (!isIntersecting && boundingClientRect.bottom > (rootBounds?.top ?? 0)) continue;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let staggerIndex = 0;
+      for (const { target, isIntersecting, boundingClientRect, rootBounds } of entries) {
+        if (!isIntersecting && boundingClientRect.bottom > (rootBounds?.top ?? 0)) continue;
 
-      seen.add(target);
-      observer.unobserve(target);
-      if (!isIntersecting || !motionPreference.matches || target.matches(':focus-within')) continue;
+        seen.add(target);
+        observer.unobserve(target);
+        if (!isIntersecting || !motionPreference.matches || target.matches(':focus-within')) continue;
 
-      const reveal = target.getAttribute('data-reveal');
-      const delay = reveal === 'principle' ? principleDelay : 0;
-      if (reveal === 'principle') principleDelay += 40;
+        const kind = target.getAttribute('data-reveal') ?? '';
+        const delay = kind === 'principle' ? staggerIndex++ * 60 : 0;
+        const from = revealKeyframes[kind] ?? { opacity: 0, transform: 'translateY(16px)' };
 
-      const from = revealStart[reveal ?? ''] ?? { opacity: .86, translate: '0 7px' };
-      const animation = target.animate([from, { opacity: 1, translate: '0 0' }], {
-        duration: reveal === 'artwork' ? 500 : 380,
-        delay,
-        fill: 'backwards',
-        easing: 'cubic-bezier(.16, 1, .3, 1)',
-      });
-      running.set(target, animation);
-      animation.addEventListener('finish', () => running.delete(target), { once: true });
-    }
-  }, { threshold: .12 });
+        const animation = target.animate([from, { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' }], {
+          duration: kind === 'artwork' || kind === 'product' ? 400 : 300,
+          delay,
+          fill: 'backwards',
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        });
+        running.set(target, animation);
+        animation.addEventListener('finish', () => running.delete(target), { once: true });
+      }
+    },
+    { threshold: 0.12 },
+  );
 
   function updateObservation() {
     observer.disconnect();
@@ -48,7 +81,6 @@ function observeReveals() {
 
     const viewportHeight = window.innerHeight;
     for (const target of targets) {
-      // Already displayed content stays visible on load, history restore and preference changes.
       if (target.getBoundingClientRect().top < viewportHeight) seen.add(target);
       if (!seen.has(target)) observer.observe(target);
     }
@@ -59,6 +91,7 @@ function observeReveals() {
     const reveal = event.target.closest('[data-reveal]');
     if (reveal) finish(reveal);
   });
+
   motionPreference.addEventListener('change', updateObservation);
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) updateObservation();
@@ -66,4 +99,49 @@ function observeReveals() {
   updateObservation();
 }
 
+/* Subtle desktop pointer parallax for layered optical glass stages */
+function initParallaxStages() {
+  const stages = [...document.querySelectorAll<HTMLElement>('[data-parallax-stage]')];
+  if (stages.length === 0) return;
+
+  for (const stage of stages) {
+    const layers = [...stage.querySelectorAll<HTMLElement>('[data-parallax-depth]')];
+    if (layers.length === 0) continue;
+
+    let rafId = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    const apply = () => {
+      rafId = 0;
+      for (const layer of layers) {
+        const depth = Number(layer.dataset.parallaxDepth || '0');
+        layer.style.setProperty('--px', `${(targetX * depth * 14).toFixed(1)}px`);
+        layer.style.setProperty('--py', `${(targetY * depth * 10).toFixed(1)}px`);
+      }
+    };
+
+    const reset = () => {
+      targetX = 0;
+      targetY = 0;
+      if (rafId) cancelAnimationFrame(rafId);
+      apply();
+    };
+
+    stage.addEventListener('pointermove', (event) => {
+      if (!motionPreference.matches || !finePointer.matches || event.pointerType !== 'mouse') return;
+      const rect = stage.getBoundingClientRect();
+      targetX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+      targetY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    });
+
+    stage.addEventListener('pointerleave', reset);
+    motionPreference.addEventListener('change', reset);
+    finePointer.addEventListener('change', reset);
+  }
+}
+
+initHeaderElevation();
 observeReveals();
+initParallaxStages();

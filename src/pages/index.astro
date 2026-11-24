@@ -1,33 +1,80 @@
 ---
 import Arrow from '../components/Arrow.astro';
+import BrandIcon from '../components/BrandIcon.astro';
 import ProductPreview from '../components/ProductPreview.astro';
 import { products } from '../data/products';
 import { productsPath, site } from '../data/site';
 import SiteLayout from '../layouts/SiteLayout.astro';
 
-const icons = {"target":"<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1\"/>","simple":"<path d=\"M4 7h16M7 12h10m-7 5h4\"/>","progress":"<path d=\"M3 17l6-6 4 4 8-10m-6 0h6v6\"/>","community":"<circle cx=\"12\" cy=\"7\" r=\"4\"/><path d=\"M4 21v-2a8 8 0 0 1 16 0v2M2 21h20\"/>"};
 const principles = [
-  { icon: icons.target, title: 'Start with the problem', description: 'Pay attention to what gets in people’s way.' },
-  { icon: icons.simple, title: 'Keep it simple', description: 'Make common tasks easy to find and easy to do.' },
-  { icon: icons.progress, title: 'Keep improving', description: 'Keep listening and fixing what slows people down after release.' },
-  { icon: icons.community, title: 'Make room for ideas', description: 'Let feedback and contributions shape what comes next.' },
+  {
+    index: '01',
+    icon: 'problem' as const,
+    title: 'Start with the problem',
+    description: 'Pay attention to what gets in people’s way before writing a single line of interface.',
+  },
+  {
+    index: '02',
+    icon: 'clarity' as const,
+    title: 'Keep it simple',
+    description: 'Make common tasks easy to find, calm to read, and dependable to complete.',
+  },
+  {
+    index: '03',
+    icon: 'craft' as const,
+    title: 'Keep improving',
+    description: 'Listen closely after release and steadily remove friction that slows daily work.',
+  },
+  {
+    index: '04',
+    icon: 'ideas' as const,
+    title: 'Make room for ideas',
+    description: 'Build in the open so feedback and contributions shape what comes next.',
+  },
 ];
 ---
 <SiteLayout title={`${site.name} — ${site.tagline}`}>
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" data-parallax-stage>
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-aura hero-aura--primary"></div>
+        <div class="hero-aura hero-aura--secondary"></div>
+        <svg class="hero-grid-svg" viewBox="0 0 1200 720" fill="none" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="hexLine" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1546c8" stop-opacity="0.16" />
+              <stop offset="50%" stop-color="#2d9cff" stop-opacity="0.08" />
+              <stop offset="100%" stop-color="#1546c8" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <polygon points="880,72 1104,202 1104,462 880,592 656,462 656,202" stroke="url(#hexLine)" stroke-width="1" />
+          <polygon points="880,128 1056,230 1056,434 880,536 704,434 704,230" stroke="url(#hexLine)" stroke-width="1" />
+          <line x1="656" y1="202" x2="1104" y2="462" stroke="url(#hexLine)" stroke-width="1" />
+          <line x1="880" y1="32" x2="880" y2="640" stroke="url(#hexLine)" stroke-width="1" />
+        </svg>
+      </div>
+
       <div class="container editorial-grid hero-inner">
         <div class="hero-copy">
-          <h1 id="hero-title"><span data-intro>Building software</span> <span data-intro>for real needs.</span></h1>
+          <div class="hero-eyebrow" data-intro>
+            <span class="eyebrow-prism" aria-hidden="true"></span>
+            <span>Open-source software studio</span>
+          </div>
+          <h1 id="hero-title">
+            <span class="headline-line"><span data-intro>Building software</span></span>
+            <span class="headline-line"><span class="headline-accent" data-intro>for real needs.</span></span>
+          </h1>
           <p class="hero-mission" data-intro>{site.mission}</p>
           <div class="hero-actions" data-intro>
             <a class="action action-primary" href={productsPath}>Explore products <Arrow /></a>
-            <a class="action action-quiet" href={site.github}>GitHub <Arrow direction="diagonal" /></a>
+            <a class="action action-glass" href={site.github}>GitHub <Arrow direction="diagonal" /></a>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <span class="hero-orbit"></span>
-          <picture>
+
+        <div class="hero-sculpture" aria-hidden="true">
+          <div class="prism-plane prism-plane--back" data-parallax-depth="-0.8"></div>
+          <div class="prism-ring" data-parallax-depth="-0.4"></div>
+          <picture class="prism-mark" data-parallax-depth="0.5">
             <source media="(max-width: 47.99rem)" srcset="/images/openurain-fold-small.webp" width="580" height="534" />
             <img
               src="/images/openurain-fold.webp"
@@ -38,24 +85,37 @@ const principles = [
               decoding="async"
             />
           </picture>
+          <div class="prism-plane prism-plane--front" data-parallax-depth="1.05">
+            <span class="prism-facet-line"></span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="container products-section" aria-label="Featured product">
+    <section class="container products-section" aria-labelledby="featured-kicker">
+      <div class="section-header" data-reveal>
+        <p id="featured-kicker" class="section-kicker">Featured Software</p>
+        <a class="section-more" href={productsPath}>All products <Arrow /></a>
+      </div>
       <ProductPreview product={products[0]} />
     </section>
 
     <section id="about" class="about-section" aria-labelledby="about-title">
+      <div class="about-aura" aria-hidden="true"></div>
       <div class="container editorial-grid about-inner">
-        <div class="about-intro">
+        <div class="about-intro" data-reveal>
+          <p class="section-kicker">Philosophy</p>
           <h2 id="about-title" class="section-title">What matters</h2>
-          <p>The real test of our work is how it feels to use every day.</p>
+          <p>The real test of our work is how it feels to use every day — clear boundaries, honest capabilities, and calm craft.</p>
         </div>
         <dl class="principles">
           {principles.map((principle) => (
-            <div data-reveal="principle">
-              <dt><span class="principle-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={principle.icon} /></span><span>{principle.title}</span></dt>
+            <div class="principle-row" data-reveal="principle">
+              <span class="principle-index" aria-hidden="true">{principle.index}</span>
+              <dt>
+                <BrandIcon name={principle.icon} medallion />
+                <span>{principle.title}</span>
+              </dt>
               <dd>{principle.description}</dd>
             </div>
           ))}
@@ -63,12 +123,25 @@ const principles = [
       </div>
     </section>
 
-    <section class="container editorial-grid community-section" aria-labelledby="community-title">
-      <div class="community-copy" data-reveal>
-        <h2 id="community-title" class="section-title">Got an idea?</h2>
-        <p>Share feedback, open an issue, or contribute on GitHub.</p>
+    <section class="container community-wrap" aria-labelledby="community-title">
+      <div class="community-glass" data-reveal>
+        <div class="community-prism" aria-hidden="true">
+          <svg viewBox="0 0 320 320" fill="none">
+            <polygon points="160,16 286,88 286,232 160,304 34,232 34,88" stroke="currentColor" stroke-width="1.2" opacity="0.14" />
+            <polygon points="160,56 250,108 250,212 160,264 70,212 70,108" stroke="currentColor" stroke-width="1.2" opacity="0.22" />
+          </svg>
+        </div>
+        <div class="community-copy">
+          <BrandIcon name="opensource" medallion />
+          <div>
+            <h2 id="community-title" class="section-title">Got an idea?</h2>
+            <p>Share feedback, open an issue, or contribute on GitHub.</p>
+          </div>
+        </div>
+        <a class="action action-primary community-link" href={site.github} data-reveal="community-link">
+          Find us on GitHub <Arrow direction="diagonal" />
+        </a>
       </div>
-      <a class="action action-secondary community-link" href={site.github} data-reveal="community-link">Find us on GitHub <Arrow direction="diagonal" /></a>
     </section>
   </main>
 </SiteLayout>

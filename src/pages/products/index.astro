@@ -8,10 +8,16 @@ const description = 'Explore software from openUrain, starting with Zibblu for W
 ---
 <SiteLayout title={`Products | ${site.name}`} description={description} pathname={productsPath}>
   <main id="main-content" tabindex="-1">
-    <header class="container editorial-grid catalog-intro">
-      <h1 class="page-title" data-intro>Products</h1>
-      <p class="catalog-description" data-intro>Meet the software we make, starting with Zibblu.</p>
-    </header>
+    <section class="catalog-hero">
+      <div class="catalog-aura" aria-hidden="true"></div>
+      <header class="container editorial-grid catalog-intro">
+        <div class="catalog-heading">
+          <p class="section-kicker" data-intro>openUrain Catalog</p>
+          <h1 class="page-title" data-intro>Products</h1>
+        </div>
+        <p class="catalog-description" data-intro>Meet the software we craft for everyday work, starting with Zibblu for Windows.</p>
+      </header>
+    </section>
 
     <div class="container catalog-products">
       {products.map((product, index) => <ProductPreview product={product} priority={index === 0} />)}

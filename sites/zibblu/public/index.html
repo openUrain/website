@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171421">
+  <meta name="theme-color" content="#110d1b">
   <meta name="description" content="Zibblu is a calmer place for messages, file sharing, and private LAN conversations. Download for Windows.">
   <title>Zibblu — Chat freely. Share privately.</title>
   <link rel="canonical" href="https://zibblu.openurain.com/">
@@ -20,13 +20,57 @@
   <script src="/site.js" defer></script>
 </head>
 <body>
-  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0" focusable="false"><symbol id="icon-chat" viewBox="0 0 24 24"><path d="M21 11a9 9 0 0 1-9 9H4l2-4a9 9 0 1 1 15-5Z"/><path d="M8 10h8m-8 4h5"/></symbol><symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 6h6l2 3h10v11H3Z"/><path d="M12 12v5m-2.5-2.5h5"/></symbol><symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol><symbol id="icon-ai" viewBox="0 0 24 24"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol><symbol id="icon-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></symbol><symbol id="icon-device" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol><symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol></svg>
+  <!-- Unified bespoke Zibblu icon vocabulary (24x24 grid, 1.75px stroke + translucent inner relief) -->
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0" focusable="false">
+    <symbol id="icon-chat" viewBox="0 0 24 24">
+      <path class="icon-fill" d="M20 11.5c0 4.14-3.58 7.5-8 7.5-1.15 0-2.25-.22-3.24-.63L4 20l1.16-3.48A7.22 7.22 0 0 1 4 11.5C4 7.36 7.58 4 12 4s8 3.36 8 7.5Z"/>
+      <path d="M8.5 11.5h7M8.5 14.5h4.2"/>
+    </symbol>
+    <symbol id="icon-files" viewBox="0 0 24 24">
+      <path class="icon-fill" d="M3.5 7.5a2 2 0 0 1 2-2h4.2l1.8 2.2h7a2 2 0 0 1 2 2v7.8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z"/>
+      <path d="M12 11.5v5m-2.5-2.5L12 16.5l2.5-2.5"/>
+    </symbol>
+    <symbol id="icon-lan" viewBox="0 0 24 24">
+      <rect class="icon-fill" x="3.5" y="4.5" width="7" height="6" rx="1.5"/>
+      <rect class="icon-fill" x="13.5" y="13.5" width="7" height="6" rx="1.5"/>
+      <path d="M10.5 7.5h3.5a2 2 0 0 1 2 2v4M13.5 16.5H10a2 2 0 0 1-2-2v-4"/>
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24">
+      <rect class="icon-fill" x="5" y="10.5" width="14" height="9.5" rx="2.5"/>
+      <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3M12 14.2v2.4"/>
+    </symbol>
+    <symbol id="icon-ai" viewBox="0 0 24 24">
+      <path class="icon-fill" d="M12 3.5 14.4 9.6 20.5 12l-6.1 2.4L12 20.5l-2.4-6.1L3.5 12l6.1-2.4L12 3.5Z"/>
+      <circle cx="18.5" cy="5.5" r="1.25"/>
+    </symbol>
+    <symbol id="icon-server" viewBox="0 0 24 24">
+      <rect class="icon-fill" x="3.5" y="4" width="17" height="6.5" rx="2"/>
+      <rect class="icon-fill" x="3.5" y="13.5" width="17" height="6.5" rx="2"/>
+      <path d="M7 7.25h.01M7 16.75h.01M10.5 7.25h6.5M10.5 16.75h6.5"/>
+    </symbol>
+    <symbol id="icon-device" viewBox="0 0 24 24">
+      <rect class="icon-fill" x="3.5" y="4.5" width="17" height="12" rx="2"/>
+      <path d="M8.5 20h7M12 16.5V20"/>
+    </symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24">
+      <path class="icon-fill" d="M4.5 15.5v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/>
+      <path d="M12 4v11m-4-4 4 4 4-4"/>
+    </symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24">
+      <ellipse class="icon-fill" cx="12" cy="6.5" rx="7.5" ry="3"/>
+      <path d="M4.5 6.5v11c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-11"/>
+      <path d="M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3"/>
+    </symbol>
+  </svg>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header" data-site-header>
     <div class="shell nav-row">
       <a class="brand" href="/" aria-label="Zibblu home">
-        <img src="/images/zibblu.png" width="32" height="32" alt="">
+        <span class="brand-icon-shell">
+          <img src="/images/zibblu.png" width="32" height="32" alt="">
+        </span>
         <span>Zibblu</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
@@ -35,133 +79,361 @@
         <a href="#ai">AI</a>
         <a href="#self-host">Self-host</a>
       </nav>
-      <a class="nav-download" href="#download">Get Zibblu <span aria-hidden="true">↗</span></a>
+      <a class="nav-download" href="#download">Get Zibblu <span aria-hidden="true">↓</span></a>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="hero">
+    <!-- ====================================================================
+         HERO — Velvet Obsidian & Lavender Prism Panoramic Launch Stage
+         ==================================================================== -->
+    <section class="hero" data-parallax-stage aria-labelledby="hero-title">
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-aura hero-aura--violet"></div>
+        <div class="hero-aura hero-aura--indigo"></div>
+        <svg class="hero-arcs" viewBox="0 0 1440 860" fill="none" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#c4a7ff" stop-opacity="0.22"/>
+              <stop offset="50%" stop-color="#8b62e8" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#c4a7ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <circle cx="720" cy="680" r="460" stroke="url(#arcGrad)" stroke-width="1"/>
+          <circle cx="720" cy="680" r="620" stroke="url(#arcGrad)" stroke-width="1"/>
+          <circle cx="720" cy="680" r="780" stroke="url(#arcGrad)" stroke-width="1" stroke-dasharray="6 10"/>
+        </svg>
+      </div>
+
       <div class="shell hero-inner">
-        <div class="hero-copy" data-intro>
-          <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A different kind of messenger</span>
-          <h1>More than<br>a <em>message.</em></h1>
-          <p>Good conversations deserve a simple place to live. Chat, share, and keep what matters close—without the noise.</p>
-          <div class="hero-actions">
-            <a class="button button-light" href="#download">Download for Windows <span aria-hidden="true">↓</span></a>
-            <a class="link-muted" href="#experience">Take a look <span aria-hidden="true">↘</span></a>
+        <div class="hero-copy">
+          <div class="eyebrow-pill" data-intro>
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span>Windows 10 / 11 · x64 · v0.1.10</span>
           </div>
-          <div class="hero-footnote">Windows 10 / 11 · x64 · v0.1.10</div>
-        </div>
-        <div class="hero-visual" data-intro>
-          <span class="hero-orbit" aria-hidden="true"></span>
-          <div class="visual-label"><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-device"></use></svg> The Zibblu desktop experience</div>
-          <div class="screenshot-screen hero-screen">
-            <img src="/images/showcase/02-desktop-chat.png" alt="Zibblu Windows desktop client with chat list, rich messages and a composer" width="1186" height="786" fetchpriority="high">
+          <h1 id="hero-title">
+            <span class="headline-line"><span data-intro>More than</span></span>
+            <span class="headline-line"><span data-intro>a <em>message.</em></span></span>
+          </h1>
+          <p class="hero-lead" data-intro>Good conversations deserve a calm place to live. Chat, share resumable files, open private LAN text rooms, and approve AI requests on your terms.</p>
+          <div class="hero-actions" data-intro>
+            <a class="button button-light" href="#download">
+              <span>Download for Windows</span>
+              <svg class="line-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
+            </a>
+            <a class="link-muted" href="#experience">Explore features <span aria-hidden="true">↓</span></a>
           </div>
-          <a class="screenshot-original" href="/images/showcase/02-desktop-chat.png">View full screenshot <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="hero-stage" data-intro>
+          <div class="hero-pedestal" aria-hidden="true"></div>
+
+          <figure class="stage-satellite stage-satellite--left" data-parallax-depth="-0.75" aria-hidden="true">
+            <img src="/images/showcase/04-compact-chat.png" width="462" height="787" alt="" decoding="async">
+          </figure>
+
+          <figure class="stage-satellite stage-satellite--right" data-parallax-depth="-0.75" aria-hidden="true">
+            <img src="/images/showcase/03-private-lan.png" width="462" height="786" alt="" decoding="async">
+          </figure>
+
+          <div class="stage-center" data-parallax-depth="0.55">
+            <div class="stage-glass-bezel">
+              <div class="stage-rim" aria-hidden="true"></div>
+              <div class="stage-bar">
+                <span class="stage-bar-label">
+                  <svg class="line-icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#icon-device"></use></svg>
+                  Zibblu Desktop · Windows
+                </span>
+                <a class="screenshot-original" href="/images/showcase/02-desktop-chat.png">Full size <span aria-hidden="true">↗</span></a>
+              </div>
+              <div class="screenshot-screen">
+                <img src="/images/showcase/02-desktop-chat.png" alt="Zibblu Windows desktop client with conversation list, rich Markdown messages, and floating composer" width="1186" height="786" fetchpriority="high">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="intro shell" id="experience" aria-labelledby="intro-title">
-      <div class="section-kicker">01 — Everyday</div>
-      <div class="intro-main" data-reveal>
-        <h2 id="intro-title">Everything in its <em>right place.</em></h2>
-        <p>Familiar chat, practical file sharing, and a thoughtful desktop layout. The important part is the conversation, not the interface around it.</p>
+    <!-- ====================================================================
+         01 — EVERYDAY CHAT & FILES (Luminous Pearl-Lavender Stage)
+         ==================================================================== -->
+    <section class="chapter-light" id="experience" aria-labelledby="intro-title">
+      <div class="shell">
+        <div class="chapter-header" data-reveal>
+          <span class="section-kicker">01 — Everyday</span>
+          <div class="chapter-header-grid">
+            <h2 id="intro-title">Everything in its <em>right place.</em></h2>
+            <p>Familiar chat, practical file sharing, and a thoughtful desktop layout. The important part is the conversation, not the interface around it.</p>
+          </div>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-visual" data-reveal="artwork" data-parallax-stage>
+            <div class="light-glass-plinth">
+              <div class="plinth-glow" aria-hidden="true"></div>
+              <div class="plinth-window" data-parallax-depth="0.45">
+                <img src="/images/showcase/02-desktop-chat.png" width="1186" height="786" loading="lazy" decoding="async" alt="Zibblu Windows three-pane desktop conversation layout with local message history">
+              </div>
+              <div class="plinth-meta">
+                <span>Three-pane desktop layout · Local SQLite profile</span>
+                <a href="/images/showcase/02-desktop-chat.png">Inspect screenshot ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-pillars">
+            <article class="pillar-item" data-reveal="stagger">
+              <span class="glass-medallion glass-medallion--light" aria-hidden="true">
+                <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-chat"></use></svg>
+              </span>
+              <div>
+                <h3>Make space for the words.</h3>
+                <p>Direct messages, group chats, rich Markdown and LaTeX rendering, and a floating composer that stays out of your way.</p>
+              </div>
+            </article>
+
+            <article class="pillar-item" data-reveal="stagger">
+              <span class="glass-medallion glass-medallion--light" aria-hidden="true">
+                <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-database"></use></svg>
+              </span>
+              <div>
+                <h3>Local-first history.</h3>
+                <p>Received ordinary messages live in a per-account SQLite database on your device, ready to search and read even when offline.</p>
+              </div>
+            </article>
+
+            <article class="pillar-item" data-reveal="stagger">
+              <span class="glass-medallion glass-medallion--light" aria-hidden="true">
+                <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-files"></use></svg>
+              </span>
+              <div>
+                <h3>Send more. Resume cleanly.</h3>
+                <p>Share files and folders, pause or resume interrupted transfers, and verify completed downloads with SHA-256 integrity checks.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="feature-story shell" aria-label="Zibblu desktop features">
-      <div class="story-image" data-reveal>
-        <img src="/images/showcase/04-compact-chat.png" width="462" height="787" loading="lazy" decoding="async" alt="Zibblu's narrow desktop window showing rich formatted messages and chat controls">
+    <!-- ====================================================================
+         02 — PRIVATE LAN MODE (Deep Obsidian-Plum Glass Stage)
+         ==================================================================== -->
+    <section class="private-section" id="private" aria-labelledby="private-heading" data-parallax-stage>
+      <div class="private-backdrop" aria-hidden="true">
+        <div class="private-aura"></div>
+        <svg class="lan-radar-svg" viewBox="0 0 640 640" fill="none">
+          <circle cx="320" cy="320" r="128" stroke="#c4a7ff" stroke-opacity="0.16" stroke-width="1"/>
+          <circle cx="320" cy="320" r="208" stroke="#c4a7ff" stroke-opacity="0.11" stroke-width="1" stroke-dasharray="4 8"/>
+          <circle cx="320" cy="320" r="288" stroke="#c4a7ff" stroke-opacity="0.07" stroke-width="1"/>
+        </svg>
       </div>
-      <div class="story-copy" data-reveal>
-        <span class="small-heading feature-label"><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-chat"></use></svg> Conversation first</span>
-        <h3>Make space<br>for the words.</h3>
-        <p>Direct messages, group chats, rich text, and a composer that stays out of your way. Received messages live in a local SQLite profile, ready to revisit offline.</p>
-        <div class="story-line"></div>
-        <span class="small-heading feature-label"><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-folder"></use></svg> Files that keep up</span>
-        <h3>Send more.<br>Start again.</h3>
-        <p>Share files and folders, resume interrupted downloads, and verify completed transfers. Your conversation and files belong together.</p>
-      </div>
-    </section>
 
-    <section class="private-section" id="private" aria-labelledby="private-heading">
       <div class="shell private-layout">
         <div class="private-copy" data-reveal>
-          <span class="section-kicker feature-label"><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg> 02 — Private LAN</span>
+          <span class="section-kicker section-kicker--dark">
+            <svg class="line-icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg>
+            02 — Private LAN
+          </span>
           <h2 id="private-heading">Some things<br>stay <em>between us.</em></h2>
-          <p>When you're on a reachable local network, you can invite another verified device into a separate encrypted text session. It travels directly between devices—never through a message relay.</p>
-          <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md#private-lan-sessions">Understand private chat <span aria-hidden="true">↗</span></a>
-          <div class="privacy-detail">
+          <p class="private-lead">On a reachable local network, invite another verified device into a separate, authenticated, encrypted text session. Messages move directly over LAN—never through an online message relay.</p>
+
+          <div class="private-facts">
+            <div class="private-fact">
+              <span class="glass-medallion glass-medallion--dark" aria-hidden="true">
+                <svg class="line-icon" width="20" height="20" focusable="false"><use href="#icon-lan"></use></svg>
+              </span>
+              <div>
+                <strong>Direct LAN transport</strong>
+                <span>No cloud relay and no silent internet fallback.</span>
+              </div>
+            </div>
+            <div class="private-fact">
+              <span class="glass-medallion glass-medallion--dark" aria-hidden="true">
+                <svg class="line-icon" width="20" height="20" focusable="false"><use href="#icon-lock"></use></svg>
+              </span>
+              <div>
+                <strong>In-memory text only</strong>
+                <span>Excluded from ordinary chat history, logs, and cloud AI.</span>
+              </div>
+            </div>
+          </div>
+
+          <a class="text-link text-link--dark" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md#private-lan-sessions">Read private chat security boundaries <span aria-hidden="true">↗</span></a>
+
+          <aside class="privacy-boundary-glass" aria-label="Privacy distinction">
             <span class="small-heading">A CLEAR DISTINCTION</span>
-            <p>Ordinary chats use your selected online server and are not end-to-end encrypted. Private LAN text is a separate, opt-in mode with no internet fallback; ending it clears app-managed in-memory text, not screenshots or OS traces.</p>
-          </div>
+            <p>Ordinary chats use your selected online server and are <strong>not end-to-end encrypted</strong>. Private LAN text is a separate, opt-in mode with no internet fallback; ending it clears app-managed in-memory text, not screenshots or OS traces.</p>
+          </aside>
         </div>
-        <figure class="private-art" data-reveal>
-          <div class="private-window">
-            <img src="/images/showcase/03-private-lan.png" width="462" height="786" alt="Zibblu dark Private LAN screen while finding devices" loading="lazy" decoding="async">
+
+        <figure class="private-art" data-reveal="artwork">
+          <div class="private-monolith" data-parallax-depth="0.5">
+            <div class="stage-rim" aria-hidden="true"></div>
+            <img src="/images/showcase/03-private-lan.png" width="462" height="786" alt="Zibblu dark Private LAN screen while finding devices on the local network" loading="lazy" decoding="async">
           </div>
-          <figcaption>Private LAN · Device discovery</figcaption>
+          <figcaption>Private LAN · Device discovery on local network</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="ai-section" id="ai" aria-labelledby="ai-title">
-      <div class="shell ai-layout" data-reveal>
-        <div class="ai-symbol" aria-hidden="true"><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-ai"></use></svg></div>
-        <div>
+    <!-- ====================================================================
+         03 — READ-ONLY AI ASSISTANT (Frosted-Glass Compact Showcase)
+         ==================================================================== -->
+    <section class="ai-section" id="ai" aria-labelledby="ai-title" data-parallax-stage>
+      <div class="shell ai-layout">
+        <figure class="ai-visual" data-reveal="artwork">
+          <div class="ai-glass-stage">
+            <div class="ai-stage-glow" aria-hidden="true"></div>
+            <div class="ai-window" data-parallax-depth="0.45">
+              <img src="/images/showcase/04-compact-chat.png" width="462" height="787" loading="lazy" decoding="async" alt="Zibblu compact window displaying a Markdown reply and the explicit @lumi AI prompt bar with Choose context button">
+            </div>
+            <div class="ai-scope-chip" data-parallax-depth="0.9">
+              <svg class="line-icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#icon-ai"></use></svg>
+              <span>Explicit per-request scope · Read-only</span>
+            </div>
+          </div>
+          <figcaption>Compact window · Explicit @assistant context selection</figcaption>
+        </figure>
+
+        <div class="ai-copy" data-reveal>
+          <span class="glass-medallion glass-medallion--light" aria-hidden="true">
+            <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-ai"></use></svg>
+          </span>
           <span class="section-kicker">03 — Your assistant</span>
           <h2 id="ai-title">Ask about what <em>matters.</em></h2>
-          <p>Mention a configured AI assistant in an ordinary chat. Choose the messages and optional files for a request, then review what will go to your selected provider. The assistant is read-only. Private LAN content stays out of cloud AI.</p>
-          <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md">AI and privacy <span aria-hidden="true">↗</span></a>
+          <p class="ai-lead">Mention a configured assistant with <code>@name</code> inside an ordinary chat. Pick the exact messages and optional text files for that single request, review the provider disclosure, and send.</p>
+
+          <ul class="ai-guarantees">
+            <li><strong>One-shot authorization:</strong> Every request requires explicit context approval—no background collection.</li>
+            <li><strong>Strictly read-only:</strong> Assistants cannot edit history, modify local files, or execute commands.</li>
+            <li><strong>LAN isolation:</strong> Private LAN sessions are completely excluded from cloud AI requests.</li>
+          </ul>
+
+          <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md#ai-least-privilege">AI least-privilege boundaries <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="selfhost-section shell" id="self-host" aria-labelledby="selfhost-title">
-      <div class="section-kicker feature-label"><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-server"></use></svg> 04 — Your infrastructure</div>
-      <div class="selfhost-grid" data-reveal>
-        <h2 id="selfhost-title">Your space.<br>Your server.</h2>
-        <div>
-          <p>Want control over where everyday messages are delivered? Deploy Zibblu Online with PostgreSQL on infrastructure you manage. Your members connect to your HTTPS server instead of the default Zibblu Online service.</p>
-          <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/ONLINE_DEPLOYMENT.md#enterprise-self-hosting">Explore self-hosting <span aria-hidden="true">↗</span></a>
-          <div class="hosting-route" aria-label="Normal chat delivery route">
-            <span><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-device"></use></svg> Device</span><span aria-hidden="true">→</span><span><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-server"></use></svg> Your server</span><span aria-hidden="true">→</span><span><svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-device"></use></svg> Device</span>
+    <!-- ====================================================================
+         04 — ENTERPRISE SELF-HOSTING (Optical Topology Architecture)
+         ==================================================================== -->
+    <section class="selfhost-section" id="self-host" aria-labelledby="selfhost-title">
+      <div class="shell">
+        <div class="selfhost-top" data-reveal>
+          <div>
+            <span class="section-kicker">
+              <svg class="line-icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#icon-server"></use></svg>
+              04 — Your infrastructure
+            </span>
+            <h2 id="selfhost-title">Your space.<br>Your <em>server.</em></h2>
+          </div>
+          <div class="selfhost-copy">
+            <p>Need ownership over where ordinary messages and attachments are routed? Deploy <strong>Zibblu Online + PostgreSQL</strong> with Docker Compose on infrastructure you control. Your team signs in to your HTTPS origin under <strong>Advanced</strong>—never routing through the default Zibblu server.</p>
+            <a class="text-link" href="https://github.com/openUrain/Zibblu/blob/main/docs/ONLINE_DEPLOYMENT.md#enterprise-self-hosting">Read self-hosting guide <span aria-hidden="true">↗</span></a>
           </div>
         </div>
+
+        <div class="topology-glass" data-reveal aria-label="Self-hosted ordinary chat delivery route">
+          <div class="topology-node">
+            <span class="glass-medallion glass-medallion--light" aria-hidden="true">
+              <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-device"></use></svg>
+            </span>
+            <strong>Windows Client</strong>
+            <span>Local SQLite history</span>
+          </div>
+
+          <div class="topology-conduit" aria-hidden="true">
+            <svg viewBox="0 0 120 24" fill="none" preserveAspectRatio="none">
+              <line x1="4" y1="12" x2="116" y2="12" stroke="currentColor" stroke-width="1.75" stroke-dasharray="5 5" class="conduit-dash"/>
+              <path d="M108 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="conduit-label">HTTPS</span>
+          </div>
+
+          <div class="topology-node topology-node--center">
+            <span class="glass-medallion glass-medallion--accent" aria-hidden="true">
+              <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-server"></use></svg>
+            </span>
+            <strong>Your HTTPS Server</strong>
+            <span>Zibblu Online + PostgreSQL</span>
+          </div>
+
+          <div class="topology-conduit" aria-hidden="true">
+            <svg viewBox="0 0 120 24" fill="none" preserveAspectRatio="none">
+              <line x1="4" y1="12" x2="116" y2="12" stroke="currentColor" stroke-width="1.75" stroke-dasharray="5 5" class="conduit-dash"/>
+              <path d="M108 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="conduit-label">HTTPS</span>
+          </div>
+
+          <div class="topology-node">
+            <span class="glass-medallion glass-medallion--light" aria-hidden="true">
+              <svg class="line-icon" width="24" height="24" focusable="false"><use href="#icon-device"></use></svg>
+            </span>
+            <strong>Windows Client</strong>
+            <span>Local SQLite history</span>
+          </div>
+        </div>
+        <p class="topology-footnote" data-reveal>Self-hosted online servers handle accounts and delivery and can read ordinary chat payloads during online availability. Ordinary chats are not end-to-end encrypted.</p>
       </div>
     </section>
 
+    <!-- ====================================================================
+         05 — DOWNLOAD & SIGN-IN FINALE (Elevated Glass Monolith)
+         ==================================================================== -->
     <section class="download-section" id="download" aria-labelledby="download-title">
-      <div class="shell download-layout">
-        <div>
+      <div class="download-aura" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="download-header" data-reveal>
           <span class="section-kicker">05 — Get started</span>
-          <h2 id="download-title">Keep the<br>conversation <em>going.</em></h2>
-          <p>Start on Windows. Your account, conversations and files are just a few clicks away.</p>
+          <h2 id="download-title">Keep the conversation <em>going.</em></h2>
+          <p>Start on Windows. Sign in to Zibblu Online or point directly to your organization’s compatible server.</p>
         </div>
-        <div class="download-panel" data-reveal>
-          <span class="small-heading">CURRENT WINDOWS RELEASE</span>
-          <div class="download-head"><strong>v0.1.10</strong><span>Windows 10 / 11 · x64</span></div>
-          <a class="button button-dark" href="https://download.openurain.com/zibblu/windows/v0.1.10/Zibblu_0.1.10_x64_Client_Setup.exe">Download Windows installer <svg class="line-icon" width="24" height="24" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg></a>
-          <div class="download-links">
-            <a href="https://download.openurain.com/zibblu/windows/v0.1.10/SHA256SUMS.txt">SHA-256 checksum <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/openUrain/Zibblu/releases/tag/v0.1.10">GitHub release <span aria-hidden="true">↗</span></a>
+
+        <div class="download-grid">
+          <figure class="signin-glass" data-reveal="artwork">
+            <div class="signin-frame">
+              <img src="/images/showcase/01-sign-in.png" width="1185" height="784" alt="Zibblu Windows sign-in and account selection screen" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Sign in with Zibblu Online, or choose Advanced for a self-hosted server.</figcaption>
+          </figure>
+
+          <div class="download-panel" data-reveal>
+            <div class="download-panel-top">
+              <span class="small-heading">CURRENT WINDOWS RELEASE</span>
+              <span class="release-badge">x64 Installer</span>
+            </div>
+            <div class="download-head">
+              <strong>v0.1.10</strong>
+              <span>Windows 10 / 11 · x64</span>
+            </div>
+            <a class="button button-dark" href="https://download.openurain.com/zibblu/windows/v0.1.10/Zibblu_0.1.10_x64_Client_Setup.exe">
+              <span>Download Windows installer</span>
+              <svg class="line-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
+            </a>
+            <div class="download-links">
+              <a href="https://download.openurain.com/zibblu/windows/v0.1.10/SHA256SUMS.txt">SHA-256 checksum <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/openUrain/Zibblu/releases/tag/v0.1.10">GitHub release <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="download-note">Installer is not code-signed. Microsoft WebView2 may be installed if required. Verify downloaded files against the published SHA-256 checksum.</p>
           </div>
-          <p class="download-note">Installer is not code-signed. Microsoft WebView2 may be installed if required. Verify downloaded files against the published checksum.</p>
         </div>
       </div>
-    </section>
-    <section class="shell login-showcase" aria-label="Signing in to Zibblu" data-reveal>
-      <figure><img src="/images/showcase/01-sign-in.png" width="1185" height="784" alt="Zibblu Windows sign-in and account selection screen" loading="lazy" decoding="async"><figcaption>Sign in to Zibblu Online, or connect to your own compatible server.</figcaption></figure>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-row">
-      <div class="footer-brand"><img src="/images/zibblu.png" width="24" height="24" alt=""><strong>Zibblu</strong> <span>Chat freely. Share privately.</span></div>
+      <div class="footer-brand">
+        <img src="/images/zibblu.png" width="24" height="24" alt="">
+        <strong>Zibblu</strong>
+        <span>Chat freely. Share privately.</span>
+      </div>
       <nav aria-label="Footer navigation">
         <a href="https://github.com/openUrain/Zibblu">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/openUrain/Zibblu/blob/main/docs/SECURITY.md">Security <span aria-hidden="true">↗</span></a>
         <a href="https://openurain.com/">openUrain <span aria-hidden="true">↗</span></a>
       </nav>
       <small>© <span id="year">2026</span> openUrain</small>
