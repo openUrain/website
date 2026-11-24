@@ -787,3 +787,27 @@ a:focus-visible {
     grid-column: 6 / -1;
   }
 }
+
+/* Cold-blue glass, with product photography kept sharp. */
+:root {
+  --glass: rgb(255 255 255 / .80);
+  --glass-shadow: 0 10px 24px rgb(0 0 0 / .20);
+  --glass-edge: rgb(255 255 255 / .80);
+}
+.site-header { position: relative; z-index: 10; background: var(--glass); backdrop-filter: blur(16px); box-shadow: 0 1px 3px rgb(0 0 0 / .10); }
+.hero { background: radial-gradient(ellipse at 75% 30%, var(--pale-blue), var(--cold-white) 75%); }
+.hero-orbit { position: absolute; inset: 8%; border: 1px solid var(--glass-edge); border-radius: 50%; z-index: -1; box-shadow: 0 10px 24px rgb(0 0 0 / .20); background: rgb(255 255 255 / .40); }
+.hero-visual picture { position: relative; }
+.hero-visual img { filter: drop-shadow(0 10px 24px rgb(0 0 0 / .20)); }
+.product-visual { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 50% 25%, var(--white), var(--product-surface) 72%); border-color: var(--glass-edge); box-shadow: var(--glass-shadow); border-radius: 1rem; }
+.artwork-frame { overflow: hidden; border-radius: .5rem; box-shadow: var(--glass-shadow); }
+.product-visual img { box-shadow: none; border-radius: 0; }
+.product-visual figcaption { display: flex; align-items: center; gap: .5rem; }
+.product-visual figcaption::before { content: ''; width: .5rem; height: .5rem; flex: none; border: 1px solid var(--accent); border-radius: 50%; }
+.product-name img { filter: drop-shadow(0 4px 6px rgb(0 0 0 / .10)); }
+.about-section { background: radial-gradient(ellipse at 90% 10%, var(--pale-blue), var(--cool-gray)); }
+.principles dt { display: flex; align-items: center; gap: .75rem; }
+.principle-icon { display: grid; place-items: center; flex: none; width: 3rem; height: 3rem; color: var(--blue); background: var(--glass); border: 1px solid var(--glass-edge); border-radius: .75rem; box-shadow: 0 5px 15px rgb(0 0 0 / .10); }
+.product-features dt { display: flex; align-items: center; gap: .75rem; }
+.product-features dt::before { content: ''; flex: none; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); }
+@media (forced-colors: active) { .principle-icon, .product-visual { border: 1px solid CanvasText; } }

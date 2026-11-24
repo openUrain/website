@@ -114,3 +114,14 @@
     }
   }
 }
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .hero-visual img { transition: transform 400ms var(--ease-out); }
+  .hero:hover .hero-visual img { transform: translateY(-.5rem); }
+  .product-preview-link .product-visual img { transition: transform 400ms var(--ease-out); }
+  .product-preview-link:hover .product-visual img { transform: scale(1.025); }
+  .principle-icon { transition: transform 300ms var(--ease-out); }
+  .principles > div:hover .principle-icon { transform: translateY(-.25rem); }
+  .action-primary { transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease; }
+  .action-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgb(0 0 0 / .10); }
+}
