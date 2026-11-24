@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import Arrow from '../../components/Arrow.astro';
+import BrandIcon from '../../components/BrandIcon.astro';
 import ProductArtwork from '../../components/ProductArtwork.astro';
 import { productPath, products, type Product } from '../../data/products';
 import { productsPath, site } from '../../data/site';
@@ -21,18 +22,21 @@ const { product } = Astro.props;
   description={product.summary}
   pathname={productPath(product.id)}
 >
-  <main id="main-content" class:list={['product', `product--${product.id}`]} tabindex="-1">
+  <main id="main-content" class:list={['product', 'product-detail', `product--${product.id}`]} tabindex="-1">
     <div class="product-detail-hero">
+      <div class="product-detail-aura" aria-hidden="true"></div>
       <div class="container">
         <a class="product-back" href={productsPath}><Arrow direction="left" /> Back to products</a>
 
         <header class="editorial-grid product-stage product-detail-stage">
           <div class="product-copy">
-            <div class="product-name" data-intro>
-              <img src={product.icon} alt="" width="44" height="44" decoding="async" />
+            <div class="product-header-row" data-intro>
+              <div class="product-icon-shell">
+                <img src={product.icon} alt="" width="44" height="44" decoding="async" />
+              </div>
               <div>
                 <h1>{product.name}</h1>
-                <p class="product-platform">{product.platform}</p>
+                <p class="product-platform">{product.platform} · {product.version}</p>
               </div>
             </div>
             <p class="product-tagline" data-intro>{product.tagline}</p>
@@ -44,32 +48,48 @@ const { product } = Astro.props;
                 </a>
               )}
               {product.downloadUrl && (
-                <a class:list={['action', product.website ? 'action-secondary' : 'action-primary']} href={product.downloadUrl}>
-                  Download for Windows <Arrow direction="diagonal" />
+                <a class="action action-glass" href={product.downloadUrl}>
+                  <BrandIcon name="download" size={20} />
+                  Download for Windows
                 </a>
               )}
-              <a
-                class:list={['action', product.downloadUrl ? 'action-secondary' : 'action-primary']}
-                href={product.repository}
-              >
+              <a class="action action-quiet" href={product.repository}>
                 GitHub <Arrow direction="diagonal" />
               </a>
             </div>
+            {product.checksumUrl && product.releaseUrl && (
+              <p class="product-verify-links" data-intro>
+                <a href={product.checksumUrl}>SHA-256 checksum</a>
+                <span aria-hidden="true">·</span>
+                <a href={product.releaseUrl}>Release notes ({product.version})</a>
+              </p>
+            )}
           </div>
-          <ProductArtwork artwork={product.artwork} priority />
+          <ProductArtwork
+            artwork={product.artwork}
+            secondary={product.secondaryArtwork}
+            priority
+            variant="detail"
+          />
         </header>
       </div>
     </div>
 
-
     <div class="container product-details">
       {product.featureGroups.map((group, index) => (
         <section class="editorial-grid feature-group" aria-labelledby={`feature-group-${index}`}>
-          <h2 class="section-title" id={`feature-group-${index}`}>{group.title}</h2>
+          <div class="feature-group-head" data-reveal>
+            <p class="section-kicker">0{index + 1}</p>
+            <h2 class="section-title" id={`feature-group-${index}`}>{group.title}</h2>
+            <p class="feature-group-subtitle">{group.subtitle}</p>
+          </div>
           <dl class="product-features">
             {group.features.map((feature) => (
-              <div>
-                <dt>{feature.title}</dt>
+              <div class="feature-item" data-reveal="principle">
+                <dt>
+                  <BrandIcon name={feature.icon} tone="zibblu" medallion />
+                  <span>{feature.title}</span>
+                </dt>
                 <dd>{feature.description}</dd>
               </div>
             ))}

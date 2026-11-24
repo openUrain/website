@@ -4,8 +4,11 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 ---
 <SiteLayout title="Page not found | openUrain" description="This page could not be found. Return to the openUrain homepage." noindex>
   <main id="main-content" class="container not-found" tabindex="-1">
-    <h1 class="page-title">Page not found.</h1>
-    <p>Check the address or head back to the homepage.</p>
-    <a class="action action-primary" href="/">Back to home <Arrow /></a>
+    <div class="not-found-glass">
+      <p class="section-kicker">404</p>
+      <h1 class="page-title">Page not found.</h1>
+      <p>Check the address or head back to the openUrain homepage.</p>
+      <a class="action action-primary" href="/">Back to home <Arrow /></a>
+    </div>
   </main>
 </SiteLayout>

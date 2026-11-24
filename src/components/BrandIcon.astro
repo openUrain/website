@@ -1,0 +1,181 @@
+---
+interface Props {
+  name:
+    | 'chat'
+    | 'files'
+    | 'lan'
+    | 'privacy'
+    | 'ai'
+    | 'server'
+    | 'download'
+    | 'opensource'
+    | 'problem'
+    | 'clarity'
+    | 'craft'
+    | 'ideas';
+  size?: 20 | 24 | 32;
+  tone?: 'openurain' | 'zibblu';
+  medallion?: boolean;
+}
+
+const { name, size = 24, tone = 'openurain', medallion = false } = Astro.props;
+---
+{medallion ? (
+  <span class:list={['glass-icon', `glass-icon--${tone}`]} aria-hidden="true">
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+      {name === 'chat' && (
+        <>
+          <path class="icon-fill" d="M20 11.5c0 4.14-3.58 7.5-8 7.5-1.15 0-2.25-.22-3.24-.63L4 20l1.16-3.48A7.22 7.22 0 0 1 4 11.5C4 7.36 7.58 4 12 4s8 3.36 8 7.5Z" />
+          <path d="M8.5 11.5h7M8.5 14.5h4.2" />
+        </>
+      )}
+      {name === 'files' && (
+        <>
+          <path class="icon-fill" d="M3.5 7.5a2 2 0 0 1 2-2h4.2l1.8 2.2h7a2 2 0 0 1 2 2v7.8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z" />
+          <path d="M12 11.5v5m-2.5-2.5L12 16.5l2.5-2.5" />
+        </>
+      )}
+      {name === 'lan' && (
+        <>
+          <rect class="icon-fill" x="3.5" y="4.5" width="7" height="6" rx="1.5" />
+          <rect class="icon-fill" x="13.5" y="13.5" width="7" height="6" rx="1.5" />
+          <path d="M10.5 7.5h3.5a2 2 0 0 1 2 2v4M13.5 16.5H10a2 2 0 0 1-2-2v-4" />
+        </>
+      )}
+      {name === 'privacy' && (
+        <>
+          <rect class="icon-fill" x="5" y="10.5" width="14" height="9.5" rx="2.5" />
+          <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3M12 14.2v2.4" />
+        </>
+      )}
+      {name === 'ai' && (
+        <>
+          <path class="icon-fill" d="M12 3.5 14.4 9.6 20.5 12l-6.1 2.4L12 20.5l-2.4-6.1L3.5 12l6.1-2.4L12 3.5Z" />
+          <circle cx="18.5" cy="5.5" r="1.25" />
+        </>
+      )}
+      {name === 'server' && (
+        <>
+          <rect class="icon-fill" x="3.5" y="4" width="17" height="6.5" rx="2" />
+          <rect class="icon-fill" x="3.5" y="13.5" width="17" height="6.5" rx="2" />
+          <path d="M7 7.25h.01M7 16.75h.01M10.5 7.25h6.5M10.5 16.75h6.5" />
+        </>
+      )}
+      {name === 'download' && (
+        <>
+          <path class="icon-fill" d="M4.5 15.5v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3" />
+          <path d="M12 4v11m-4-4 4 4 4-4" />
+        </>
+      )}
+      {name === 'opensource' && (
+        <>
+          <polygon class="icon-fill" points="12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5" />
+          <path d="M9.5 10.2 7.5 12l2 1.8m5-3.6 2 1.8-2 1.8m-1.8-4.5-1.4 5.4" />
+        </>
+      )}
+      {name === 'problem' && (
+        <>
+          <circle class="icon-fill" cx="12" cy="12" r="8.5" />
+          <circle cx="12" cy="12" r="4.5" />
+          <circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none" />
+        </>
+      )}
+      {name === 'clarity' && (
+        <>
+          <rect class="icon-fill" x="4" y="4.5" width="16" height="15" rx="3" />
+          <path d="M8 9.5h8M8 13h5.5M8 16.5h3.5" />
+        </>
+      )}
+      {name === 'craft' && (
+        <>
+          <path class="icon-fill" d="M4 16.5 9.5 11l3.5 3.5L20 7.5" />
+          <path d="M15.5 7.5H20V12" />
+        </>
+      )}
+      {name === 'ideas' && (
+        <>
+          <polygon class="icon-fill" points="12 3.5 19.5 7.75 19.5 16.25 12 20.5 4.5 16.25 4.5 7.75" />
+          <path d="M12 8.5v7M8.5 12h7" />
+        </>
+      )}
+    </svg>
+  </span>
+) : (
+  <svg class="brand-icon" viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    {name === 'chat' && (
+      <>
+        <path d="M20 11.5c0 4.14-3.58 7.5-8 7.5-1.15 0-2.25-.22-3.24-.63L4 20l1.16-3.48A7.22 7.22 0 0 1 4 11.5C4 7.36 7.58 4 12 4s8 3.36 8 7.5Z" />
+        <path d="M8.5 11.5h7M8.5 14.5h4.2" />
+      </>
+    )}
+    {name === 'files' && (
+      <>
+        <path d="M3.5 7.5a2 2 0 0 1 2-2h4.2l1.8 2.2h7a2 2 0 0 1 2 2v7.8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z" />
+        <path d="M12 11.5v5m-2.5-2.5L12 16.5l2.5-2.5" />
+      </>
+    )}
+    {name === 'lan' && (
+      <>
+        <rect x="3.5" y="4.5" width="7" height="6" rx="1.5" />
+        <rect x="13.5" y="13.5" width="7" height="6" rx="1.5" />
+        <path d="M10.5 7.5h3.5a2 2 0 0 1 2 2v4M13.5 16.5H10a2 2 0 0 1-2-2v-4" />
+      </>
+    )}
+    {name === 'privacy' && (
+      <>
+        <rect x="5" y="10.5" width="14" height="9.5" rx="2.5" />
+        <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3M12 14.2v2.4" />
+      </>
+    )}
+    {name === 'ai' && (
+      <>
+        <path d="M12 3.5 14.4 9.6 20.5 12l-6.1 2.4L12 20.5l-2.4-6.1L3.5 12l6.1-2.4L12 3.5Z" />
+        <circle cx="18.5" cy="5.5" r="1.25" />
+      </>
+    )}
+    {name === 'server' && (
+      <>
+        <rect x="3.5" y="4" width="17" height="6.5" rx="2" />
+        <rect x="3.5" y="13.5" width="17" height="6.5" rx="2" />
+        <path d="M7 7.25h.01M7 16.75h.01M10.5 7.25h6.5M10.5 16.75h6.5" />
+      </>
+    )}
+    {name === 'download' && (
+      <>
+        <path d="M4.5 15.5v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3" />
+        <path d="M12 4v11m-4-4 4 4 4-4" />
+      </>
+    )}
+    {name === 'opensource' && (
+      <>
+        <polygon points="12 3 19.8 7.5 19.8 16.5 12 21 4.2 16.5 4.2 7.5" />
+        <path d="M9.5 10.2 7.5 12l2 1.8m5-3.6 2 1.8-2 1.8m-1.8-4.5-1.4 5.4" />
+      </>
+    )}
+    {name === 'problem' && (
+      <>
+        <circle cx="12" cy="12" r="8.5" />
+        <circle cx="12" cy="12" r="4.5" />
+        <circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none" />
+      </>
+    )}
+    {name === 'clarity' && (
+      <>
+        <rect x="4" y="4.5" width="16" height="15" rx="3" />
+        <path d="M8 9.5h8M8 13h5.5M8 16.5h3.5" />
+      </>
+    )}
+    {name === 'craft' && (
+      <>
+        <path d="M4 16.5 9.5 11l3.5 3.5L20 7.5" />
+        <path d="M15.5 7.5H20V12" />
+      </>
+    )}
+    {name === 'ideas' && (
+      <>
+        <polygon points="12 3.5 19.5 7.75 19.5 16.25 12 20.5 4.5 16.25 4.5 7.75" />
+        <path d="M12 8.5v7M8.5 12h7" />
+      </>
+    )}
+  </svg>
+)}

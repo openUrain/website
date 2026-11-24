@@ -9,26 +9,49 @@ interface Props {
 }
 const { product, priority = false } = Astro.props;
 const titleId = `${product.id}-title`;
-const ctaId = `${product.id}-cta`;
 ---
 <article
   class:list={['product', 'product-preview', `product--${product.id}`]}
   aria-labelledby={titleId}
+  data-reveal={priority ? undefined : 'product'}
 >
-  <a class="editorial-grid product-stage product-preview-link" href={product.website ?? productPath(product.id)} aria-labelledby={ctaId}>
-    <div class="product-copy" data-intro={priority ? '' : undefined}>
-      <div class="product-name">
-        <img src={product.icon} alt="" width="44" height="44" loading="lazy" decoding="async" />
-        <h2 id={titleId}>{product.name}</h2>
+  <div class="product-sanctuary">
+    <div class="product-sanctuary-glow" aria-hidden="true"></div>
+    <div class="editorial-grid product-stage">
+      <div class="product-copy" data-intro={priority ? '' : undefined}>
+        <div class="product-header-row">
+          <div class="product-icon-shell">
+            <img src={product.icon} alt="" width="44" height="44" loading={priority ? 'eager' : 'lazy'} decoding="async" />
+          </div>
+          <div>
+            <h2 id={titleId}>{product.name}</h2>
+            <p class="product-availability">{product.platform} · {product.version}</p>
+          </div>
+        </div>
+
+        <p class="product-tagline">{product.tagline}</p>
+        <p class="product-description">{product.summary}</p>
+
+        <ul class="product-highlights" aria-label="Key capabilities">
+          {product.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+
+        <div class="product-actions">
+          <a class="action action-primary" href={product.website ?? productPath(product.id)}>
+            Explore {product.name} <Arrow direction={product.website ? 'diagonal' : 'right'} />
+          </a>
+          <a class="action action-quiet" href={productPath(product.id)}>
+            Overview <Arrow />
+          </a>
+        </div>
       </div>
-      <p class="product-tagline">{product.tagline}</p>
-      <ul class="product-highlights" aria-label="Key features">
-        {product.highlights.map((highlight) => <li>{highlight}</li>)}
-      </ul>
-      <p class="product-availability">{product.platform}</p>
-      <p class="product-description">{product.summary}</p>
-      <span class="product-preview-cta" id={ctaId}>Explore {product.name} <Arrow /></span>
+
+      <ProductArtwork
+        artwork={product.artwork}
+        secondary={product.secondaryArtwork}
+        priority={priority}
+        variant="preview"
+      />
     </div>
-    <ProductArtwork artwork={product.artwork} priority={priority} />
-  </a>
+  </div>
 </article>

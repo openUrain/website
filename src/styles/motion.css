@@ -1,6 +1,11 @@
+/* ==========================================================================
+   openUrain Intentional Motion System
+   Respects prefers-reduced-motion; GPU-composited transforms & opacity only.
+   ========================================================================== */
 @media (prefers-reduced-motion: no-preference) {
   :root {
-    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   @view-transition {
@@ -8,72 +13,108 @@
   }
 
   ::view-transition-old(root) {
-    animation-duration: 100ms;
+    animation-duration: 150ms;
     animation-timing-function: ease-in;
   }
 
   ::view-transition-new(root) {
-    animation-duration: 180ms;
-    animation-timing-function: ease-out;
+    animation-duration: 200ms;
+    animation-timing-function: var(--ease-expo);
   }
 
+  /* Staggered Hero & Page Intro Choreography */
   [data-intro] {
-    animation: enter 430ms var(--ease-out) var(--intro-delay, 0ms) backwards;
+    animation: rise-in 400ms var(--ease-expo) var(--intro-delay, 0ms) backwards;
   }
 
-  .hero h1 span {
-    animation-name: uncover;
-    animation-duration: 560ms;
+  .hero h1 [data-intro] {
+    animation: mask-reveal 400ms var(--ease-expo) var(--intro-delay, 0ms) backwards;
   }
 
-  .hero h1 span + span,
-  .catalog-description,
-  .product-detail-stage .product-tagline {
-    --intro-delay: 65ms;
+  .hero-eyebrow[data-intro] {
+    --intro-delay: 0ms;
   }
 
-  .hero-mission,
-  .product-detail-stage .product-description {
-    --intro-delay: 115ms;
+  .hero h1 .headline-line:first-child [data-intro] {
+    --intro-delay: 60ms;
   }
 
-  .hero-actions,
-  .product-detail-stage .product-actions {
-    --intro-delay: 155ms;
+  .hero h1 .headline-line:nth-child(2) [data-intro] {
+    --intro-delay: 140ms;
   }
 
-  .hero-visual picture {
-    animation: unfold 650ms var(--ease-out) 40ms backwards;
+  .hero-mission[data-intro],
+  .catalog-description[data-intro],
+  .product-detail-stage .product-tagline[data-intro] {
+    --intro-delay: 200ms;
   }
 
-  .product-visual[data-intro] {
-    animation: unfold 560ms var(--ease-out) 45ms backwards;
+  .hero-actions[data-intro],
+  .product-detail-stage .product-description[data-intro] {
+    --intro-delay: 260ms;
   }
 
-  @keyframes uncover {
+  .product-detail-stage .product-actions[data-intro],
+  .product-verify-links[data-intro] {
+    --intro-delay: 300ms;
+  }
+
+  .hero-sculpture .prism-mark {
+    animation: sculpture-arrive 400ms var(--ease-expo) 120ms backwards, sculpture-float 9s ease-in-out 700ms infinite;
+  }
+
+  .hero-aura--primary {
+    animation: aura-breathe 14s ease-in-out infinite alternate;
+  }
+
+  .hero-aura--secondary {
+    animation: aura-breathe 18s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes mask-reveal {
     from {
-      opacity: .65;
-      clip-path: inset(-.2em -.1em 50%);
-      translate: 0 .12em;
+      opacity: 0;
+      transform: translateY(105%);
     }
-
     to {
-      clip-path: inset(-.2em -.1em -.2em);
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  @keyframes unfold {
+  @keyframes rise-in {
     from {
-      opacity: .65;
-      translate: .625rem 0;
-      scale: .98;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  @keyframes enter {
+  @keyframes sculpture-arrive {
     from {
-      opacity: .78;
-      translate: 0 .5rem;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+  }
+
+  @keyframes sculpture-float {
+    0%, 100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -8px;
+    }
+  }
+
+  @keyframes aura-breathe {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(-20px, 16px, 0) scale(1.06);
     }
   }
 
@@ -81,47 +122,78 @@
     animation: none;
   }
 
+  /* Tactile Interactive Feedback */
   .action,
   .site-nav a,
   .product-back,
-  .product-preview-cta {
-    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+  .section-more {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 200ms var(--ease-expo),
+      transform 150ms var(--ease-expo),
+      filter 150ms ease;
   }
 
   a svg {
-    transition: transform 180ms var(--ease-out);
+    transition: transform 200ms var(--ease-expo);
   }
 
   @media (hover: hover) and (pointer: fine) {
+    .action-primary:hover,
+    .action-glass:hover {
+      transform: translateY(-2px);
+    }
+
+    .action-primary:active,
+    .action-glass:active {
+      transform: translateY(0);
+    }
+
     a:hover .arrow--right {
-      transform: translateX(.1875rem);
+      transform: translateX(4px);
     }
 
     a:hover .arrow--left {
-      transform: translateX(-.1875rem);
+      transform: translateX(-4px);
     }
 
     a:hover .arrow--diagonal {
-      transform: translate(.125rem, -.125rem);
+      transform: translate(3px, -3px);
     }
 
-    .product-preview-link .product-visual img {
-      transition: transform 360ms var(--ease-out);
+    .glass-icon {
+      transition: transform 200ms var(--ease-expo), box-shadow 200ms var(--ease-expo);
     }
 
-    .product-preview-link:hover .product-visual img {
-      transform: scale(1.012);
+    .principle-row:hover {
+      background: rgb(255 255 255 / 0.56);
+      padding-inline: var(--space-3);
+    }
+
+    .principle-row:hover .glass-icon,
+    .feature-item:hover .glass-icon {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px -6px rgb(21 70 200 / 0.24), inset 0 1px 0 var(--white);
+    }
+
+    .product--zibblu .feature-item:hover .glass-icon {
+      box-shadow: 0 12px 24px -6px rgb(103 68 180 / 0.28), inset 0 1px 0 var(--white);
+    }
+
+    .artwork-frame,
+    .artwork-satellite,
+    .prism-plane,
+    .prism-ring,
+    .prism-mark {
+      transition: transform 300ms var(--ease-smooth);
     }
   }
 }
 
-@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
-  .hero-visual img { transition: transform 400ms var(--ease-out); }
-  .hero:hover .hero-visual img { transform: translateY(-.5rem); }
-  .product-preview-link .product-visual img { transition: transform 400ms var(--ease-out); }
-  .product-preview-link:hover .product-visual img { transform: scale(1.025); }
-  .principle-icon { transition: transform 300ms var(--ease-out); }
-  .principles > div:hover .principle-icon { transform: translateY(-.25rem); }
-  .action-primary { transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease; }
-  .action-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgb(0 0 0 / .10); }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
