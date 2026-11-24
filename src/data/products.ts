@@ -29,7 +29,7 @@ export const products = [
     platform: 'Windows 10 / 11 · x64',
     icon: '/brand/zibblu.png',
     artwork: {
-      src: 'https://raw.githubusercontent.com/openUrain/Zibblu/main/assets/showcase/02-desktop-chat.png',
+      src: '/images/zibblu-desktop-chat.png',
       width: 1186,
       height: 786,
       alt: 'Zibblu Windows desktop client showing the conversation list and a chat with rich text',

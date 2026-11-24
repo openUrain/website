@@ -12,7 +12,8 @@ const { artwork, priority = false } = Astro.props;
   data-intro={priority ? '' : undefined}
   data-reveal={priority ? undefined : 'artwork'}
 >
-  <img
+  <div class="artwork-frame">
+    <img
     src={artwork.src}
     width={artwork.width}
     height={artwork.height}
@@ -20,6 +21,7 @@ const { artwork, priority = false } = Astro.props;
     loading={priority ? 'eager' : 'lazy'}
     fetchpriority={priority ? 'high' : undefined}
     decoding="async"
-  />
+    />
+  </div>
   <figcaption>{artwork.caption}</figcaption>
 </figure>
