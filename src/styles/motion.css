@@ -117,7 +117,7 @@
 
 @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
   .hero-visual img { transition: transform 400ms var(--ease-out); }
-  .hero-visual:hover img { transform: translateY(-.5rem); }
+  .hero:hover .hero-visual img { transform: translateY(-.5rem); }
   .product-preview-link .product-visual img { transition: transform 400ms var(--ease-out); }
   .product-preview-link:hover .product-visual img { transform: scale(1.025); }
   .principle-icon { transition: transform 300ms var(--ease-out); }
